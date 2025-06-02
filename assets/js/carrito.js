@@ -196,16 +196,18 @@ const renderizarCarrito = () => {
   }
 };
 
-// Inicializar eventos
+// Recuperar carrito al cargar cualquier página
 document.addEventListener("DOMContentLoaded", () => {
+  const raw = localStorage.getItem("carrito");
+  try {
+    carrito = JSON.parse(raw) || [];
+  } catch (e) {
+    console.error("Error al parsear JSON de carrito:", raw);
+    carrito = [];
+  }
+  actualizarCantidadCarrito();
+
   if (window.location.pathname.includes("carrito.html")) {
-    const raw = localStorage.getItem("carrito");
-    try {
-      carrito = JSON.parse(raw) || [];
-    } catch (e) {
-      console.error("Error al parsear JSON de carrito:", raw);
-      carrito = [];
-    }
     renderizarCarrito();
   }
 
@@ -235,6 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
   iconoCarrito?.addEventListener("click", (e) => {
     e.preventDefault();
     panelCarrito?.classList.toggle("visible");
+    renderizarCarrito();
   });
 
   btnVaciar?.addEventListener("click", () => {

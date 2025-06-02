@@ -27,27 +27,41 @@
 
         <!-- Columna derecha: Resumen -->
         <aside class="carrito-resumen">
-          <h3 class="titulo-resumen">Hay 2 artículos en su carrito.</h3>
+          <h3 class="titulo-resumen" id="carrito-resumen-cantidad">
+            Hay 0 artículos en su carrito.
+          </h3>
 
-          <label for="cupon"
-            ><strong>¿Tiene un código promocional?</strong></label
-          >
+          <label for="cupon">
+            <strong>¿Tiene un código promocional?</strong>
+          </label>
           <input type="text" id="cupon" class="input-cupon" />
 
           <div class="resumen-linea">
             <span>Subtotal:</span>
-            <span>$28.624</span>
+            <span id="resumen-subtotal">$0.00</span>
           </div>
           <div class="resumen-linea">
-            <span>Transporte:</span>
-            <span>-</span>
+            <span>Gastos de envío:</span>
+            <span>$1.99</span>
           </div>
-          <p class="condiciones">(Bajo condiciones)</p>
+          <div class="resumen-linea">
+            <span>Descuento:</span>
+            <span>$0.00</span>
+          </div>
+
+          <hr />
 
           <div class="resumen-total">
             <span>Total:</span>
-            <span>$28.624</span>
+            <span id="resumen-total">$0.00</span>
           </div>
+
+          <!-- ======================================== 
+          <div class="resumen-total resumen-final">
+            <strong>Subtotal</strong>
+            <strong id="resumen-total-final">$0.00</strong>
+          </div>
+          -->
 
           <a href="/pages/checkout.html" class="btn-finalizar">
             FINALIZAR COMPRA
