@@ -830,3 +830,146 @@ img {
   color: var(--color-texto);
   border: 1px solid var(--color-gris-suave);
 }
+
+/* === CARRITO STYLES === */
+
+.contenedor-carrito {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titulo-carrito {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.carrito-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+.carrito-items {
+  flex: 3;
+}
+
+.producto-carrito {
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.producto-detalle {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.producto-detalle img {
+  width: 80px;
+  border-radius: 0.5rem;
+}
+
+.producto-info {
+  flex: 1;
+}
+
+.producto-info .nombre {
+  font-weight: bold;
+}
+
+.producto-info .precio {
+  color: var(--color-acento);
+}
+
+.cantidad-control input {
+  width: 40px;
+  text-align: center;
+}
+
+.cantidad-control button {
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.3rem;
+}
+
+.eliminar {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--color-acento);
+}
+
+.btn-volver {
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  font-weight: bold;
+}
+
+.carrito-resumen {
+  flex: 2;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--color-fondo);
+}
+
+.titulo-resumen {
+  margin-bottom: 1rem;
+  color: var(--color-primario);
+}
+
+.input-cupon {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.resumen-linea {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.condiciones {
+  font-size: 1.2rem;
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: var(--color-acento);
+}
+
+.btn-finalizar {
+  display: block;
+  background-color: var(--color-secundario);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  text-decoration: none;
+}
+
+.carrito-info {
+  margin-top: 3rem;
+  background-color: #d4f2ff;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: var(--color-primario);
+  font-size: 1.4rem;
+}

@@ -39,14 +39,56 @@ const actualizarCantidadCarrito = () => {
 // Renderizar lista en DOM
 const renderizarCarrito = () => {
   const lista = document.getElementById("lista-carrito");
+  const listaResumen = document.getElementById("lista-productos-carrito");
+  const resumenSubtotal = document.getElementById("resumen-subtotal");
+  const resumenTotal = document.getElementById("resumen-total");
+  const resumenCantidad = document.getElementById("carrito-resumen-cantidad");
   const total = document.getElementById("total-carrito");
   const panel = document.getElementById("carrito-detalle");
 
   if (!lista || !total || !panel) return;
 
+  if (listaResumen && resumenSubtotal && resumenTotal && resumenCantidad) {
+    listaResumen.innerHTML = "";
+    let subtotalResumen = 0;
+    carrito.forEach((item) => {
+      const div = document.createElement("div");
+      div.className = "producto-carrito";
+      div.innerHTML = `
+        <div class="producto-detalle">
+          <img src="/assets/img/image/image-${item.id}.jpg" alt="${
+        item.nombre
+      }" />
+          <div class="producto-info">
+            <p class="nombre">${item.nombre}</p>
+            <p class="precio">
+              <strong>$${(item.precio / 100).toFixed(2)}</strong>
+            </p>
+          </div>
+          <div class="cantidad-control">
+            <button>-</button>
+            <input type="number" value="${item.cantidad}" />
+            <button>+</button>
+          </div>
+          <button class="eliminar" onclick="eliminarDelCarrito(${
+            item.id
+          })">🗑️</button>
+        </div>
+      `;
+      listaResumen.appendChild(div);
+      subtotalResumen += item.precio * item.cantidad;
+    });
+
+    resumenCantidad.textContent = `Hay ${carrito.length} artículo${
+      carrito.length !== 1 ? "s" : ""
+    } en su carrito.`;
+    resumenSubtotal.textContent = `$${(subtotalResumen / 100).toFixed(2)}`;
+    resumenTotal.textContent = `$${(subtotalResumen / 100).toFixed(2)}`;
+  }
+
   lista.innerHTML = "";
   let subtotal = 0;
-  const envio = 199; // 1,99 €
+  const envio = 199; // 1,99 $
   const descuento = 0;
 
   carrito.forEach((item, index) => {
@@ -74,7 +116,7 @@ const renderizarCarrito = () => {
     const precio = document.createElement("div");
     precio.style.fontSize = "1.4rem";
     precio.style.fontWeight = "bold";
-    precio.textContent = `€${((item.precio * item.cantidad) / 100).toFixed(2)}`;
+    precio.textContent = `$${((item.precio * item.cantidad) / 100).toFixed(2)}`;
 
     const eliminarBtn = document.createElement("button");
     eliminarBtn.textContent = "×";
@@ -102,29 +144,36 @@ const renderizarCarrito = () => {
     <hr style="margin: 1rem 0;" />
     <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
       <span>Subtotal:</span>
-      <strong>€${(subtotal / 100).toFixed(2)}</strong>
+      <strong>$${(subtotal / 100).toFixed(2)}</strong>
     </div>
     <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
       <span>Gastos de envío:</span>
-      <strong>€${(envio / 100).toFixed(2)}</strong>
+      <strong>$${(envio / 100).toFixed(2)}</strong>
     </div>
     <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
       <span>Descuento:</span>
-      <strong>€${(descuento / 100).toFixed(2)}</strong>
+      <strong>$${(descuento / 100).toFixed(2)}</strong>
     </div>
     <hr style="margin: 1rem 0;" />
     <div style="display: flex; justify-content: space-between; font-size: 1.6rem; font-weight: bold;">
       <span>Importe total:</span>
-      <span>€${(totalFinal / 100).toFixed(2)}</span>
+      <span>$${(totalFinal / 100).toFixed(2)}</span>
     </div>
   `;
   lista.appendChild(resumen);
-  total.textContent = `€${(totalFinal / 100).toFixed(2)}`;
+  total.textContent = `$${(totalFinal / 100).toFixed(2)}`;
   panel.style.display = carrito.length ? "block" : "none";
 };
 
 // Inicializar eventos
 document.addEventListener("DOMContentLoaded", () => {
+  // Mostrar productos guardados en carrito.html
+  if (window.location.pathname.includes("carrito.html")) {
+    const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito = carritoGuardado;
+    renderizarCarrito();
+  }
+
   // Asegurarse que todos los botones .btn-temporada sean <a> o tengan type="button" si son <button>
   const botones = document.querySelectorAll(".btn-temporada");
   botones.forEach((btn) => {
@@ -156,4 +205,22 @@ document.addEventListener("DOMContentLoaded", () => {
   btnVaciar?.addEventListener("click", () => {
     vaciarCarrito();
   });
+
+  // Guardar el carrito actualizado en localStorage cada vez que se modifica
+  const guardarCarrito = () => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  };
+
+  // Modificar agregarAlCarrito y eliminarDelCarrito para guardar cambios
+  const originalAgregar = agregarAlCarrito;
+  agregarAlCarrito = function (producto) {
+    originalAgregar(producto);
+    guardarCarrito();
+  };
+
+  const originalEliminar = eliminarDelCarrito;
+  eliminarDelCarrito = function (id) {
+    originalEliminar(id);
+    guardarCarrito();
+  };
 });
