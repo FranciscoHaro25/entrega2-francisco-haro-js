@@ -1,81 +1,48 @@
-// Declaración de variables
-let nombreCliente = "";
-let apellidoCliente = "";
-
-function ingresarDatos() {
-  nombreCliente = prompt("Ingresa tu nombre:");
-  apellidoCliente = prompt("Ingresa tu apellido:");
-}
-
-ingresarDatos();
-
-// Declaración de productos - array de objetos
+// Array de productos
 const productos = [
-  { id: 1, nombre: "Rascador Deluxe", precio: 30 },
-  { id: 2, nombre: "Cama Gatuna", precio: 40 },
-  { id: 3, nombre: "Juguete con Catnip", precio: 15 },
+  { id: 1, nombre: "Cama Gatuna", precio: 40 },
+  { id: 2, nombre: "Rascador Deluxe", precio: 35 },
+  { id: 3, nombre: "Juguete con Catnip", precio: 20 },
 ];
 
-// Variables principales
 let carrito = [];
-let total = 0;
-let continuar = true;
 
-// Función para mostrar el menú de productos
-function mostrarMenu() {
-  let mensaje = "¡Bienvenido a Gatox! \nElige un producto:\n";
-  productos.forEach((p) => {
-    mensaje += `${p.id}. ${p.nombre} - $${p.precio}\n`;
-  });
-  mensaje += "0. Finalizar compra";
-  return mensaje;
-}
+// Mostrar productos
+const contenedorProductos = document.getElementById("productos");
 
-// function mostrarMenu() {
-//   let mensaje = "¡Bienvenido a Gatox!\nElige un producto:\n";
-//   mensaje += "1. Rascador Deluxe - $30\n";
-//   mensaje += "2. Cama Gatuna - $40\n";
-//   mensaje += "3. Juguete con Catnip - $15\n";
-//   mensaje += "0. Finalizar compra";
-//   return mensaje;
-// }
+productos.forEach((prod) => {
+  const card = document.createElement("div");
+  card.innerHTML = `
+    <h3>${prod.nombre}</h3>
+    <p>Precio: $${prod.precio}</p>
+    <button onclick="agregarAlCarrito(${prod.id})">Agregar al carrito</button>
+  `;
+  contenedorProductos.appendChild(card);
+});
 
-// Función para agregar un producto al carrito
-function agregarProducto(id) {
+function agregarAlCarrito(id) {
   const producto = productos.find((p) => p.id === id);
-  if (producto) {
-    carrito.push(producto);
-    total += producto.precio;
-    alert(`Agregaste: ${producto.nombre}`);
-  } else {
-    alert("Opción inválida");
-  }
+  carrito.push(producto);
+  actualizarCarrito();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// Simulador principal con ciclo y condicionales
-while (continuar) {
-  const opcion = parseInt(prompt(mostrarMenu()));
-
-  if (opcion === 0) {
-    continuar = false;
-  } else {
-    agregarProducto(opcion);
-  }
-}
-
-// Mostrar resumen final con alert y consola
-if (carrito.length > 0) {
-  let resumen = "Resumen de tu compra en Gatox:\n";
-  carrito.forEach((p) => {
-    resumen += `- ${p.nombre} - $${p.precio}\n`;
+function actualizarCarrito() {
+  const contenedorCarrito = document.getElementById("carrito");
+  contenedorCarrito.innerHTML = "<h2>Carrito</h2>";
+  carrito.forEach((p, index) => {
+    contenedorCarrito.innerHTML += `<p>${p.nombre} - $${p.precio}</p>`;
   });
-  resumen += `Total: $${total}`;
-  resumen =
-    `Gracias por tu compra, ${nombreCliente} ${apellidoCliente} 🐾\n\n` +
-    resumen;
-  alert(resumen);
-  console.log("Productos en el carrito:", carrito);
-  console.log("Total a pagar: $" + total);
-} else {
-  alert("No compraste nada. ¡Hasta pronto Gatox!");
 }
+
+document.getElementById("formulario").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("correo").value;
+  alert(
+    `Gracias por tu compra, ${nombre}! Te enviaremos el resumen a ${correo}.`
+  );
+  localStorage.clear();
+  carrito = [];
+  actualizarCarrito();
+});

@@ -4,21 +4,513 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tienda de Gatos</title>
-  </head>
-  <body>
-    <h1>Bienvenidos a la tienda Gatox</h1>
-    <h2>Simulador de compra de accesorios para gatos</h2>
-    <p>
-      Este simulador es una tienda ficticia llamada Gatox, donde el usuario
-      puede elegir entre algunos productos para gatos. A través de mensajes
-      emergentes, va seleccionando lo que quiere comprar y al final se le
-      muestra un resumen con el total.
-    </p>
-    <p>
-      El proyecto fue pensado para aplicar todo lo aprendido: variables,
-      funciones, condicionales, ciclos y uso de prompt, alert y console.log.
-    </p>
 
-    <script src="./assets/js/main.js"></script>
+    <!-- Font de google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome para íconos -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- AOS CSS para animaciones al hacer scroll (scroll reveal con clases) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Hojas de estilo personalizadas -->
+    <link rel="stylesheet" href="/assets/css/normalize.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- ======================================== -->
+    <!--               NAV                        -->
+    <!-- ======================================== -->
+
+    <header class="header">
+      <div class="header-flex contenedor">
+        <!-- Logo a la izquierda -->
+        <a href="./index.html" class="logo-header">
+          <img src="./assets/img/image/gatox-logo.png" alt="Logo Gatox" />
+        </a>
+
+        <!-- Menú principal al centro -->
+        <nav class="nav-principal">
+          <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./pages/catalogo.html">Catálogo</a></li>
+            <li><a href="./pages/inspiracion.html">Inspiración</a></li>
+            <li><a href="./pages/contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- Sección derecha con íconos -->
+        <div class="nav-acciones">
+          <a href="#" aria-label="Buscar"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></a>
+          <a href="#" aria-label="Perfil"><i class="fa-solid fa-user"></i></a>
+          <a
+            href="javascript:void(0);"
+            aria-label="Carrito"
+            class="carrito-icono"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cantidad-carrito" class="carrito-cantidad">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================== -->
+    <!--               HERO CARRUSEL              -->
+    <!-- ======================================== -->
+    <section class="hero-carrusel" id="hero">
+      <div class="hero-contenido slide activo">
+        <img src="/assets/img/image/imagen-hero-1.jpg" alt="Slide 1" />
+        <div class="contenido-hero contenedor">
+          <h1>Bienvenida a Gatox</h1>
+          <p>Accesorios para gatos con estilo</p>
+          <a class="btn-hero" href="./pages/catalogo.html">Ver Catálogo</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="/assets/img/image/imagen-hero-2.jpg" alt="Slide 2" />
+        <div class="contenido-hero contenedor">
+          <h1>Promo destacada</h1>
+          <p>¡20% OFF en juguetes seleccionados!</p>
+          <a class="btn-hero" href="#">Ver Oferta</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="/assets/img/image/imagen-hero-3.jpg" alt="Slide 3" />
+        <div class="contenido-hero contenedor">
+          <h1>Gatopuntos</h1>
+          <p>Acumulá Gatopuntos en cada compra</p>
+          <a class="btn-hero" href="#">Unite al Club</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="/assets/img/image/imagen-hero-4.jpg" alt="Slide 3" />
+        <div class="contenido-hero contenedor">
+          <h1>Testimonio breve o beneficio</h1>
+          <p>Acumulá Gatopuntos en cada compra</p>
+          <a class="btn-hero" href="#">Unite al Club</a>
+        </div>
+      </div>
+
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </section>
+
+    <!-- ======================================== -->
+    <!--             RECOMENDADOS                 -->
+    <!-- ======================================== -->
+    <section class="lo-mas-vendido" aria-labelledby="titulo-vendido">
+      <div class="contenedor text-center">
+        <h2 class="titulo-seccion">Michi Recomendados</h2>
+        <p class="subtitulo-seccion">
+          Descubre lo que más les encanta a nuestros clientes gatunos
+        </p>
+
+        <div class="grid-vendidos">
+          <div class="card-vendido">
+            <img
+              src="/assets/img/image/oferta-1.jpg"
+              alt="Producto más vendido"
+            />
+            <h3>Pack Juguetes Sorpresa</h3>
+            <p>
+              Aprovechá nuestras ofertas limitadas y llevate una selección de
+              juguetes sorpresa para que tu gato nunca se aburra.
+            </p>
+            <a href="#" class="btn-categoria">Ver producto</a>
+          </div>
+
+          <div class="card-vendido">
+            <img
+              src="/assets/img/image/oferta-2.jpg"
+              alt="Producto más vendido"
+            />
+            <h3>Kit Deluxe de Juguetes</h3>
+            <p>
+              Este es el favorito indiscutible. Incluye juguetes irresistibles y
+              seguros para horas de diversión sin parar.
+            </p>
+            <a href="#" class="btn-categoria">Ver producto</a>
+          </div>
+
+          <div class="card-vendido">
+            <img
+              src="/assets/img/image/oferta-3.jpg"
+              alt="Producto más vendido"
+            />
+            <h3>Rascador Minimalista</h3>
+            <p>
+              Recién salido del horno gatuno: un rascador con diseño moderno que
+              cuida tu casa y entretiene a tu michi.
+            </p>
+            <a href="#" class="btn-categoria">Ver producto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!--             CATEGORÍAS                   -->
+    <!-- ======================================== -->
+    <section class="contenedor-categoria" aria-labelledby="titulo-categorias">
+      <header class="text-center contenedor-header">
+        <h2 id="titulo-categorias">Categorías</h2>
+        <h3>Descubre lo mejor para tu michi</h3>
+        <p>
+          Explora nuestras categorías pensadas para el confort, la diversión y
+          el estilo de tu gato.
+        </p>
+      </header>
+
+      <div class="listado-categorias contenedor" data-aos="fade-up">
+        <div class="card-categoria">
+          <div class="icono-categoria">
+            <i class="fa-solid fa-shield-cat"></i>
+          </div>
+          <h3>Juguetes</h3>
+          <p>
+            Diversión asegurada para tu gato con nuestros juguetes interactivos
+            y seguros.
+          </p>
+          <a href="#" class="btn-categoria">Ver más</a>
+        </div>
+
+        <div class="card-categoria">
+          <div class="icono-categoria">
+            <i class="fa-solid fa-bed"></i>
+          </div>
+          <h3>Camas</h3>
+          <p>
+            Comodidad y estilo en cada siesta. Encuentra la cama ideal para tu
+            michi.
+          </p>
+          <a href="#" class="btn-categoria">Ver más</a>
+        </div>
+
+        <div class="card-categoria">
+          <div class="icono-categoria">
+            <i class="fa-solid fa-tree"></i>
+          </div>
+          <h3>Rascadores</h3>
+          <p>
+            Protege tus muebles y deja que tu gato se divierta rascando con
+            estilo.
+          </p>
+          <a href="#" class="btn-categoria">Ver más</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!--           OFERTA ESPECIAL                -->
+    <!-- ======================================== -->
+    <section class="seccion-oferta" aria-labelledby="titulo-oferta">
+      <div class="oferta-info contenedor">
+        <h2 id="titulo-oferta">Arena aglomerante para gatos</h2>
+        <p>
+          Haz clic en <strong>“ACTIVAR CUPÓN -DESCUENTO”</strong> y ahorra en tu
+          compra de Biokat’s Diamond Care.
+        </p>
+        <a href="#" class="btn-cupon">15% DESCUENTO</a>
+      </div>
+      <div class="oferta-img contenedor"></div>
+    </section>
+
+    <!-- ======================================== -->
+    <!--       PRODUCTOS DE TEMPORADA             -->
+    <!-- ======================================== -->
+    <section class="temporada contenedor">
+      <h2 class="titulo-seccion text-center">Productos de Temporada</h2>
+
+      <div class="grid-temporada">
+        <div class="card-producto">
+          <img
+            src="/assets/img/image/image-1.jpg"
+            alt="BRNX Cama Palta Lover"
+          />
+          <p class="marca">BRNX</p>
+          <h3>BRNX Cama Palta Lover</h3>
+          <div class="rating">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              fill="#f39c12"
+              width="16"
+              height="16"
+            >
+              <path
+                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
+              />
+            </svg>
+            <span>5 reviews</span>
+          </div>
+          <p class="precio">$12.790</p>
+          <a
+            href="#"
+            class="btn-temporada"
+            data-id="1"
+            data-nombre="BRNX Cama Palta Lover"
+            data-precio="12790"
+            >Comprar</a
+          >
+        </div>
+
+        <div class="card-producto">
+          <img
+            src="/assets/img/image/image-2.jpg"
+            alt="Cama Antiestrés para Gato"
+          />
+          <p class="marca">Marbenpets</p>
+          <h3>Cama Antiestrés para Gato</h3>
+          <div class="rating">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              fill="#f39c12"
+              width="16"
+              height="16"
+            >
+              <path
+                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
+              />
+            </svg>
+            <span>2 reviews</span>
+          </div>
+          <p class="precio">$19.990</p>
+          <a
+            href="#"
+            class="btn-temporada"
+            data-id="2"
+            data-nombre="Cama Antiestrés para Gato"
+            data-precio="19990"
+            >Comprar</a
+          >
+        </div>
+
+        <div class="card-producto">
+          <img
+            src="/assets/img/image/image-3.jpg"
+            alt="Gigwi Cojín Cama Gato"
+          />
+          <p class="marca">Gigwi</p>
+          <h3>Gigwi Cojín Cama Gato</h3>
+          <div class="rating">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              fill="#f39c12"
+              width="16"
+              height="16"
+            >
+              <path
+                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
+              />
+            </svg>
+            <span>5 reviews</span>
+          </div>
+          <p class="precio">$22.990</p>
+          <a
+            href="#"
+            class="btn-temporada"
+            data-id="3"
+            data-nombre="Gigwi Cojín Cama Gato"
+            data-precio="22990"
+            >Comprar</a
+          >
+        </div>
+
+        <div class="card-producto">
+          <img
+            src="/assets/img/image/image-4.jpg"
+            alt="Refugio Rascador Casa Azul"
+          />
+          <p class="marca">Marbenpets</p>
+          <h3>Refugio Rascador Casa Azul</h3>
+          <div class="rating">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              fill="#f39c12"
+              width="16"
+              height="16"
+            >
+              <path
+                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
+              />
+            </svg>
+            <span>0 review</span>
+          </div>
+          <p class="precio">$12.990</p>
+          <a
+            href="#"
+            class="btn-temporada"
+            data-id="4"
+            data-nombre="Refugio Rascador Casa Azul"
+            data-precio="12990"
+            >Comprar</a
+          >
+        </div>
+
+        <div class="card-producto">
+          <img src="/assets/img/image/image-5.jpg" alt="Orijen Original Cat" />
+          <p class="marca">Orijen</p>
+          <h3>Orijen Original Cat</h3>
+          <div class="rating">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              fill="#f39c12"
+              width="16"
+              height="16"
+            >
+              <path
+                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
+              />
+            </svg>
+            <span>65 reviews</span>
+          </div>
+          <p class="precio">Desde $30.990</p>
+          <a
+            href="#"
+            class="btn-temporada"
+            data-id="5"
+            data-nombre="Orijen Original Cat"
+            data-precio="30990"
+            >Comprar</a
+          >
+        </div>
+
+        <div class="card-producto">
+          <img
+            src="/assets/img/image/image-6.jpg"
+            alt="Leonardo Fresh Meat Ternera"
+          />
+          <p class="marca">Leonardo</p>
+          <h3>Leonardo Fresh Meat Ternera</h3>
+          <div class="rating">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              fill="#f39c12"
+              width="16"
+              height="16"
+            >
+              <path
+                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
+              />
+            </svg>
+            <span>6 reviews</span>
+          </div>
+          <p class="precio">Desde $27.790</p>
+          <a
+            href="#"
+            class="btn-temporada"
+            data-id="6"
+            data-nombre="Leonardo Fresh Meat Ternera"
+            data-precio="27790"
+            >Comprar</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!--           BENEFICIOS                     -->
+    <!-- ======================================== -->
+    <section class="beneficios contenedor">
+      <h2 class="titulo-seccion text-center">
+        ¿Ganas de ahorrar? Aprovechá nuestros beneficios
+      </h2>
+
+      <div class="grid-beneficios">
+        <a href="#" class="card-beneficio">
+          <img
+            src="/assets/img/image/beneficio-1.jpg"
+            alt="Beneficio Gaticliente"
+          />
+        </a>
+
+        <a href="#" class="card-beneficio">
+          <img
+            src="/assets/img/image/beneficio-2.jpg"
+            alt="Beneficio Gatopuntos"
+          />
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================== -->
+    <!--               FOOTER                     -->
+    <!-- ======================================== -->
+    <footer class="footer">
+      <div class="footer-contenido contenedor">
+        <div class="footer-logo">
+          <a href="./index.html">
+            <img src="./assets/img/image/gatox-logo.svg" alt="Logo Gatox" />
+          </a>
+        </div>
+
+        <div class="footer-enlaces">
+          <h3>Enlaces</h3>
+          <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./pages/catalogo.html">Catálogo</a></li>
+            <li><a href="./pages/inspiracion.html">Inspiración</a></li>
+            <li><a href="./pages/contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contacto">
+          <h3>Contacto</h3>
+          <p><i class="fa-solid fa-envelope"></i> contacto@gatox.com</p>
+          <p><i class="fa-solid fa-phone"></i> +593 99 999 9999</p>
+          <p><i class="fa-solid fa-location-dot"></i> Quito, Ecuador</p>
+        </div>
+
+        <div class="footer-social">
+          <h3>Seguinos</h3>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        <p>&copy; 2025 Gatox. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <div class="carrito-detalle" id="carrito-detalle">
+      <div class="carrito-contenido">
+        <h2>Tu carrito</h2>
+        <ul id="lista-carrito"></ul>
+        <p class="carrito-total">Total: <span id="total-carrito">$0</span></p>
+        <button id="vaciar-carrito" class="btn-categoria">
+          Vaciar carrito
+        </button>
+      </div>
+    </div>
+
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/slider.js"></script>
+    <!-- Inicializar AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="/assets/js/carrito.js"></script>
   </body>
 </html>
