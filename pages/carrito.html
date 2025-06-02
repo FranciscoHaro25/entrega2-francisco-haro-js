@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carrito de Compras | Gatox</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/carrito.css" />
   </head>
   <body>
     <main class="contenedor-carrito">
@@ -14,47 +13,9 @@
       <div class="carrito-layout">
         <!-- Columna izquierda: Productos -->
         <section class="carrito-items">
-          <div class="producto-carrito">
-            <div class="producto-detalle">
-              <img
-                src="/assets/img/image/image-1.jpg"
-                alt="BRNX Cama Palta Lover"
-              />
-              <div class="producto-info">
-                <p class="nombre">BRNX Cama Palta Lover</p>
-                <p class="precio">
-                  <del>$12.790</del> <strong>$10.232</strong>
-                </p>
-              </div>
-              <div class="cantidad-control">
-                <button>-</button>
-                <input type="number" value="1" />
-                <button>+</button>
-              </div>
-              <button class="eliminar">🗑️</button>
-            </div>
-          </div>
-
-          <div class="producto-carrito">
-            <div class="producto-detalle">
-              <img
-                src="/assets/img/image/image-3.jpg"
-                alt="Gigwi Cojín Cama Gato"
-              />
-              <div class="producto-info">
-                <p class="nombre">Gigwi Cojín Cama Gato</p>
-                <p class="precio">
-                  <del>$22.990</del> <strong>$18.392</strong>
-                </p>
-              </div>
-              <div class="cantidad-control">
-                <button>-</button>
-                <input type="number" value="1" />
-                <button>+</button>
-              </div>
-              <button class="eliminar">🗑️</button>
-            </div>
-          </div>
+          <section class="carrito-items" id="lista-productos-carrito">
+            <!-- Aquí se cargan los productos con JS -->
+          </section>
 
           <button
             class="btn-volver"

@@ -2,6 +2,11 @@
 
 let carrito = [];
 
+// Guardar el carrito actualizado en localStorage
+const guardarCarrito = () => {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+};
+
 // Agregar producto
 const agregarAlCarrito = (producto) => {
   const id = parseInt(producto.id);
@@ -13,6 +18,7 @@ const agregarAlCarrito = (producto) => {
   }
   actualizarCantidadCarrito();
   renderizarCarrito();
+  guardarCarrito();
 };
 
 // Eliminar producto
@@ -20,6 +26,7 @@ const eliminarDelCarrito = (id) => {
   carrito = carrito.filter((item) => item.id !== id);
   actualizarCantidadCarrito();
   renderizarCarrito();
+  guardarCarrito();
 };
 
 // Vaciar carrito
@@ -27,6 +34,7 @@ const vaciarCarrito = () => {
   carrito = [];
   actualizarCantidadCarrito();
   renderizarCarrito();
+  guardarCarrito();
 };
 
 // Actualizar contador badge
@@ -46,141 +54,168 @@ const renderizarCarrito = () => {
   const total = document.getElementById("total-carrito");
   const panel = document.getElementById("carrito-detalle");
 
-  if (!lista || !total || !panel) return;
-
-  if (listaResumen && resumenSubtotal && resumenTotal && resumenCantidad) {
+  if (listaResumen) {
     listaResumen.innerHTML = "";
     let subtotalResumen = 0;
     carrito.forEach((item) => {
       const div = document.createElement("div");
       div.className = "producto-carrito";
-      div.innerHTML = `
-        <div class="producto-detalle">
-          <img src="/assets/img/image/image-${item.id}.jpg" alt="${
-        item.nombre
-      }" />
-          <div class="producto-info">
-            <p class="nombre">${item.nombre}</p>
-            <p class="precio">
-              <strong>$${(item.precio / 100).toFixed(2)}</strong>
-            </p>
-          </div>
-          <div class="cantidad-control">
-            <button>-</button>
-            <input type="number" value="${item.cantidad}" />
-            <button>+</button>
-          </div>
-          <button class="eliminar" onclick="eliminarDelCarrito(${
-            item.id
-          })">🗑️</button>
-        </div>
+
+      const detalle = document.createElement("div");
+      detalle.className = "producto-detalle";
+
+      const img = document.createElement("img");
+      img.src = `/assets/img/image/image-${item.id}.jpg`;
+      img.alt = item.nombre;
+
+      const info = document.createElement("div");
+      info.className = "producto-info";
+      info.innerHTML = `
+        <p class="nombre">${item.nombre}</p>
+        <p class="precio"><strong>$${(item.precio / 100).toFixed(
+          2
+        )}</strong></p>
       `;
+
+      const control = document.createElement("div");
+      control.className = "cantidad-control";
+      control.innerHTML = `
+        <button>-</button>
+        <input type="number" value="${item.cantidad}" />
+        <button>+</button>
+      `;
+
+      const eliminar = document.createElement("button");
+      eliminar.className = "eliminar";
+      eliminar.innerHTML = "🗑️";
+      eliminar.addEventListener("click", () => eliminarDelCarrito(item.id));
+
+      detalle.appendChild(img);
+      detalle.appendChild(info);
+      detalle.appendChild(control);
+      detalle.appendChild(eliminar);
+
+      div.appendChild(detalle);
       listaResumen.appendChild(div);
       subtotalResumen += item.precio * item.cantidad;
     });
 
-    resumenCantidad.textContent = `Hay ${carrito.length} artículo${
-      carrito.length !== 1 ? "s" : ""
-    } en su carrito.`;
-    resumenSubtotal.textContent = `$${(subtotalResumen / 100).toFixed(2)}`;
-    resumenTotal.textContent = `$${(subtotalResumen / 100).toFixed(2)}`;
+    if (resumenCantidad) {
+      resumenCantidad.textContent = `Hay ${carrito.length} artículo${
+        carrito.length !== 1 ? "s" : ""
+      } en su carrito.`;
+    }
+    if (resumenSubtotal) {
+      resumenSubtotal.textContent = `$${(subtotalResumen / 100).toFixed(2)}`;
+    }
+    if (resumenTotal) {
+      resumenTotal.textContent = `$${(subtotalResumen / 100).toFixed(2)}`;
+    }
   }
 
-  lista.innerHTML = "";
-  let subtotal = 0;
-  const envio = 199; // 1,99 $
-  const descuento = 0;
+  if (lista && total && panel) {
+    lista.innerHTML = "";
+    let subtotal = 0;
+    const envio = 199; // 1,99 $
+    const descuento = 0;
 
-  carrito.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.style.display = "flex";
-    li.style.alignItems = "center";
-    li.style.justifyContent = "space-between";
-    li.style.marginBottom = "1rem";
+    carrito.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.style.display = "flex";
+      li.style.alignItems = "center";
+      li.style.justifyContent = "space-between";
+      li.style.marginBottom = "1rem";
 
-    const detalle = document.createElement("div");
-    detalle.style.flex = "1";
+      const detalle = document.createElement("div");
+      detalle.style.flex = "1";
 
-    const nombre = document.createElement("strong");
-    nombre.style.fontSize = "1.4rem";
-    nombre.textContent = item.nombre;
+      const nombre = document.createElement("strong");
+      nombre.style.fontSize = "1.4rem";
+      nombre.textContent = item.nombre;
 
-    const cantidad = document.createElement("div");
-    cantidad.style.fontSize = "1.2rem";
-    cantidad.style.color = "#666";
-    cantidad.textContent = `Cantidad: ${item.cantidad}`;
+      const cantidad = document.createElement("div");
+      cantidad.style.fontSize = "1.2rem";
+      cantidad.style.color = "#666";
+      cantidad.textContent = `Cantidad: ${item.cantidad}`;
 
-    detalle.appendChild(nombre);
-    detalle.appendChild(cantidad);
+      detalle.appendChild(nombre);
+      detalle.appendChild(cantidad);
 
-    const precio = document.createElement("div");
-    precio.style.fontSize = "1.4rem";
-    precio.style.fontWeight = "bold";
-    precio.textContent = `$${((item.precio * item.cantidad) / 100).toFixed(2)}`;
+      const precio = document.createElement("div");
+      precio.style.fontSize = "1.4rem";
+      precio.style.fontWeight = "bold";
+      precio.textContent = `$${((item.precio * item.cantidad) / 100).toFixed(
+        2
+      )}`;
 
-    const eliminarBtn = document.createElement("button");
-    eliminarBtn.textContent = "×";
-    eliminarBtn.setAttribute("aria-label", "Eliminar producto");
-    eliminarBtn.style.marginLeft = "1rem";
-    eliminarBtn.style.background = "transparent";
-    eliminarBtn.style.border = "none";
-    eliminarBtn.style.fontSize = "1.6rem";
-    eliminarBtn.style.cursor = "pointer";
-    eliminarBtn.style.color = "#c0392b";
-    eliminarBtn.addEventListener("click", () => eliminarDelCarrito(item.id));
+      const eliminarBtn = document.createElement("button");
+      eliminarBtn.textContent = "×";
+      eliminarBtn.setAttribute("aria-label", "Eliminar producto");
+      eliminarBtn.style.marginLeft = "1rem";
+      eliminarBtn.style.background = "transparent";
+      eliminarBtn.style.border = "none";
+      eliminarBtn.style.fontSize = "1.6rem";
+      eliminarBtn.style.cursor = "pointer";
+      eliminarBtn.style.color = "#c0392b";
+      eliminarBtn.addEventListener("click", () => eliminarDelCarrito(item.id));
 
-    li.appendChild(detalle);
-    li.appendChild(precio);
-    li.appendChild(eliminarBtn);
+      li.appendChild(detalle);
+      li.appendChild(precio);
+      li.appendChild(eliminarBtn);
 
-    lista.appendChild(li);
-    subtotal += item.precio * item.cantidad;
-  });
+      lista.appendChild(li);
+      subtotal += item.precio * item.cantidad;
+    });
 
-  const totalFinal = subtotal + envio - descuento;
+    const totalFinal = subtotal + envio - descuento;
 
-  const resumen = document.createElement("div");
-  resumen.innerHTML = `
-    <hr style="margin: 1rem 0;" />
-    <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
-      <span>Subtotal:</span>
-      <strong>$${(subtotal / 100).toFixed(2)}</strong>
-    </div>
-    <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
-      <span>Gastos de envío:</span>
-      <strong>$${(envio / 100).toFixed(2)}</strong>
-    </div>
-    <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
-      <span>Descuento:</span>
-      <strong>$${(descuento / 100).toFixed(2)}</strong>
-    </div>
-    <hr style="margin: 1rem 0;" />
-    <div style="display: flex; justify-content: space-between; font-size: 1.6rem; font-weight: bold;">
-      <span>Importe total:</span>
-      <span>$${(totalFinal / 100).toFixed(2)}</span>
-    </div>
-  `;
-  lista.appendChild(resumen);
-  total.textContent = `$${(totalFinal / 100).toFixed(2)}`;
-  panel.style.display = carrito.length ? "block" : "none";
+    const resumen = document.createElement("div");
+    resumen.innerHTML = `
+      <hr style="margin: 1rem 0;" />
+      <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
+        <span>Subtotal:</span>
+        <strong>$${(subtotal / 100).toFixed(2)}</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
+        <span>Gastos de envío:</span>
+        <strong>$${(envio / 100).toFixed(2)}</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
+        <span>Descuento:</span>
+        <strong>$${(descuento / 100).toFixed(2)}</strong>
+      </div>
+      <hr style="margin: 1rem 0;" />
+      <div style="display: flex; justify-content: space-between; font-size: 1.6rem; font-weight: bold;">
+        <span>Importe total:</span>
+        <span>$${(totalFinal / 100).toFixed(2)}</span>
+      </div>
+    `;
+    lista.appendChild(resumen);
+    total.textContent = `$${(totalFinal / 100).toFixed(2)}`;
+    panel.style.display = carrito.length ? "block" : "none";
+  }
 };
 
 // Inicializar eventos
 document.addEventListener("DOMContentLoaded", () => {
-  // Mostrar productos guardados en carrito.html
   if (window.location.pathname.includes("carrito.html")) {
-    const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito = carritoGuardado;
+    const raw = localStorage.getItem("carrito");
+    try {
+      carrito = JSON.parse(raw) || [];
+    } catch (e) {
+      console.error("Error al parsear JSON de carrito:", raw);
+      carrito = [];
+    }
     renderizarCarrito();
   }
 
-  // Asegurarse que todos los botones .btn-temporada sean <a> o tengan type="button" si son <button>
   const botones = document.querySelectorAll(".btn-temporada");
   botones.forEach((btn) => {
     if (btn.tagName === "BUTTON" && !btn.hasAttribute("type")) {
       btn.setAttribute("type", "button");
     }
   });
+
   const iconoCarrito = document.querySelector(".carrito-icono");
   const panelCarrito = document.getElementById("carrito-detalle");
   const btnVaciar = document.getElementById("vaciar-carrito");
@@ -205,22 +240,4 @@ document.addEventListener("DOMContentLoaded", () => {
   btnVaciar?.addEventListener("click", () => {
     vaciarCarrito();
   });
-
-  // Guardar el carrito actualizado en localStorage cada vez que se modifica
-  const guardarCarrito = () => {
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-  };
-
-  // Modificar agregarAlCarrito y eliminarDelCarrito para guardar cambios
-  const originalAgregar = agregarAlCarrito;
-  agregarAlCarrito = function (producto) {
-    originalAgregar(producto);
-    guardarCarrito();
-  };
-
-  const originalEliminar = eliminarDelCarrito;
-  eliminarDelCarrito = function (id) {
-    originalEliminar(id);
-    guardarCarrito();
-  };
 });
