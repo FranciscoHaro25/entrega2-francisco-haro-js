@@ -973,3 +973,179 @@ img {
   color: var(--color-primario);
   font-size: 1.4rem;
 }
+
+/* === Estilos para pago.html === */
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #2d2d2d;
+}
+
+.contenedor-checkout {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.progreso-pasos .pasos {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #ccc;
+}
+
+.paso {
+  flex: 1;
+  text-align: center;
+  padding-bottom: 1rem;
+  color: #999;
+  font-weight: bold;
+  position: relative;
+}
+
+.paso.activo {
+  color: #ec6a37;
+}
+
+.paso::before {
+  content: attr(class);
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto 0.5rem;
+  background-color: #ccc;
+  color: white;
+  border-radius: 50%;
+  line-height: 24px;
+  font-size: 1.2rem;
+}
+
+.paso.activo::before {
+  background-color: #ec6a37;
+}
+
+.checkout-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.formulario-login {
+  flex: 3;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.formulario-login h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2d2d2d;
+}
+
+.formulario-login label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+.formulario-login input[type="email"],
+.formulario-login input[type="password"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.campo-password {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.campo-password button {
+  background-color: #2d2d2d;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-principal {
+  background-color: #ec6a37;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.link-secundario {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b90000;
+  text-decoration: none;
+}
+
+.btn-invitado {
+  margin-top: 2rem;
+  background-color: #2d2d2d;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.resumen-pedido {
+  flex: 2;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  font-size: 1.6rem;
+}
+
+.resumen-pedido h3 {
+  margin-bottom: 1rem;
+  color: #2d2d2d;
+}
+
+.resumen-pedido .mostrar-detalles {
+  font-size: 1.4rem;
+  color: #333;
+  text-decoration: underline;
+}
+
+.linea-resumen {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.nota-condiciones {
+  font-size: 1.2rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.total-final {
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  color: #c0392b;
+}
