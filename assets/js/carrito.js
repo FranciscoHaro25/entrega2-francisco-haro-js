@@ -45,20 +45,81 @@ const renderizarCarrito = () => {
   if (!lista || !total || !panel) return;
 
   lista.innerHTML = "";
-  let suma = 0;
+  let subtotal = 0;
+  const envio = 199; // 1,99 €
+  const descuento = 0;
 
-  carrito.forEach((item) => {
+  carrito.forEach((item, index) => {
     const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${item.nombre}</strong> x${item.cantidad} - $${(
-      item.precio * item.cantidad
-    ).toLocaleString()}
-    `;
+    li.style.display = "flex";
+    li.style.alignItems = "center";
+    li.style.justifyContent = "space-between";
+    li.style.marginBottom = "1rem";
+
+    const detalle = document.createElement("div");
+    detalle.style.flex = "1";
+
+    const nombre = document.createElement("strong");
+    nombre.style.fontSize = "1.4rem";
+    nombre.textContent = item.nombre;
+
+    const cantidad = document.createElement("div");
+    cantidad.style.fontSize = "1.2rem";
+    cantidad.style.color = "#666";
+    cantidad.textContent = `Cantidad: ${item.cantidad}`;
+
+    detalle.appendChild(nombre);
+    detalle.appendChild(cantidad);
+
+    const precio = document.createElement("div");
+    precio.style.fontSize = "1.4rem";
+    precio.style.fontWeight = "bold";
+    precio.textContent = `€${((item.precio * item.cantidad) / 100).toFixed(2)}`;
+
+    const eliminarBtn = document.createElement("button");
+    eliminarBtn.textContent = "×";
+    eliminarBtn.setAttribute("aria-label", "Eliminar producto");
+    eliminarBtn.style.marginLeft = "1rem";
+    eliminarBtn.style.background = "transparent";
+    eliminarBtn.style.border = "none";
+    eliminarBtn.style.fontSize = "1.6rem";
+    eliminarBtn.style.cursor = "pointer";
+    eliminarBtn.style.color = "#c0392b";
+    eliminarBtn.addEventListener("click", () => eliminarDelCarrito(item.id));
+
+    li.appendChild(detalle);
+    li.appendChild(precio);
+    li.appendChild(eliminarBtn);
+
     lista.appendChild(li);
-    suma += item.precio * item.cantidad;
+    subtotal += item.precio * item.cantidad;
   });
 
-  total.textContent = `$${suma.toLocaleString()}`;
+  const totalFinal = subtotal + envio - descuento;
+
+  const resumen = document.createElement("div");
+  resumen.innerHTML = `
+    <hr style="margin: 1rem 0;" />
+    <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
+      <span>Subtotal:</span>
+      <strong>€${(subtotal / 100).toFixed(2)}</strong>
+    </div>
+    <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
+      <span>Gastos de envío:</span>
+      <strong>€${(envio / 100).toFixed(2)}</strong>
+    </div>
+    <div style="display: flex; justify-content: space-between; font-size: 1.4rem;">
+      <span>Descuento:</span>
+      <strong>€${(descuento / 100).toFixed(2)}</strong>
+    </div>
+    <hr style="margin: 1rem 0;" />
+    <div style="display: flex; justify-content: space-between; font-size: 1.6rem; font-weight: bold;">
+      <span>Importe total:</span>
+      <span>€${(totalFinal / 100).toFixed(2)}</span>
+    </div>
+  `;
+  lista.appendChild(resumen);
+  total.textContent = `€${(totalFinal / 100).toFixed(2)}`;
   panel.style.display = carrito.length ? "block" : "none";
 };
 

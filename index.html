@@ -463,6 +463,44 @@
     </section>
 
     <!-- ======================================== -->
+    <!--           CARRITO (DETALLE)              -->
+    <!-- ======================================== -->
+
+    <div class="carrito-detalle" id="carrito-detalle">
+      <div class="carrito-contenido">
+        <h2>Su compra</h2>
+        <ul id="lista-carrito">
+          <!-- Ejemplo de ítem, se generará dinámicamente -->
+          <!--
+          <li class="item-carrito">
+            <img src="ruta/imagen.jpg" alt="Nombre producto" />
+            <div class="info">
+              <p class="nombre">Nombre del producto</p>
+              <p class="cantidad-precio">1 × $12.990</p>
+            </div>
+            <button class="eliminar-item" aria-label="Eliminar">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </li>
+          -->
+        </ul>
+        <div class="carrito-footer">
+          <p class="carrito-subtotal">
+            Subtotal <span id="total-carrito">$0</span>
+          </p>
+          <a href="./pages/checkout.html" class="btn-categoria green full-width"
+            >Tramitar Pedido</a
+          >
+          <a
+            href="/index.html#productos"
+            class="btn-categoria full-width outline"
+            >Ver mi carrito</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================== -->
     <!--               FOOTER                     -->
     <!-- ======================================== -->
     <footer class="footer">
@@ -502,17 +540,6 @@
         <p>&copy; 2025 Gatox. Todos los derechos reservados.</p>
       </div>
     </footer>
-
-    <div class="carrito-detalle" id="carrito-detalle">
-      <div class="carrito-contenido">
-        <h2>Tu carrito</h2>
-        <ul id="lista-carrito"></ul>
-        <p class="carrito-total">Total: <span id="total-carrito">$0</span></p>
-        <button id="vaciar-carrito" class="btn-categoria">
-          Vaciar carrito
-        </button>
-      </div>
-    </div>
 
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/slider.js"></script>

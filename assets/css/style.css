@@ -687,3 +687,146 @@ img {
 .carrito-detalle.visible {
   display: block;
 }
+
+/* === CHECKOUT PAGE STYLES === */
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formulario .campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.formulario input {
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: 1px solid var(--color-gris-suave);
+  border-radius: 0.5rem;
+}
+
+#formulario-checkout button,
+.btn-categoria.green {
+  background-color: #28a745;
+  color: white;
+  padding: 1.2rem 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#formulario-checkout button:hover,
+.btn-categoria.green:hover {
+  background-color: #218838;
+}
+
+.checkout-info section {
+  margin-top: 3rem;
+}
+
+.checkout-info h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.checkout-info p {
+  font-size: 1.4rem;
+  color: var(--color-texto);
+}
+
+.carrito-detalle {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease, opacity 0.3s ease;
+}
+
+.carrito-detalle.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-categoria {
+  transition: transform 0.2s ease;
+}
+
+.btn-categoria:hover {
+  transform: scale(1.05);
+}
+
+.item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.item-carrito img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.item-carrito .info {
+  flex: 1;
+}
+
+.item-carrito .nombre {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.item-carrito .cantidad-precio {
+  font-size: 1.4rem;
+  color: var(--color-texto);
+}
+
+.eliminar-item {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.carrito-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 1.5rem;
+}
+
+.carrito-subtotal {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.full-width {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.btn-categoria.outline {
+  background-color: white;
+  color: var(--color-texto);
+  border: 1px solid var(--color-gris-suave);
+}
