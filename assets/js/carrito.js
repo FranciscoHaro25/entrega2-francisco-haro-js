@@ -1,113 +1,98 @@
-// carrito.js
+// === CARRITO LOGICA EN MEMORIA ===
 
-// Obtener carrito del localStorage o inicializar vacío
-const obtenerCarrito = () => JSON.parse(localStorage.getItem("carrito")) || [];
+let carrito = [];
 
-// Guardar carrito actualizado en localStorage
-const guardarCarrito = (carrito) =>
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-
-// Agregar producto al carrito
+// Agregar producto
 const agregarAlCarrito = (producto) => {
-  let carrito = obtenerCarrito();
-  const existente = carrito.find((item) => item.id === producto.id);
-
+  const id = parseInt(producto.id);
+  const existente = carrito.find((item) => item.id === id);
   if (existente) {
-    existente.cantidad++;
+    existente.cantidad += 1;
   } else {
-    carrito.push({ ...producto, cantidad: 1 });
+    carrito.push({ ...producto, id, cantidad: 1 });
   }
-
-  guardarCarrito(carrito);
-};
-
-// Eliminar producto del carrito por ID
-const eliminarDelCarrito = (id) => {
-  let carrito = obtenerCarrito();
-  carrito = carrito.filter((item) => item.id !== id);
-  guardarCarrito(carrito);
-};
-
-// Vaciar todo el carrito
-const vaciarCarrito = () => localStorage.removeItem("carrito");
-
-// Mostrar el contenido del carrito por consola (puede adaptarse al DOM)
-const mostrarCarrito = () => {
-  const carrito = obtenerCarrito();
-  console.table(carrito);
-};
-
-// Conectar los botones de productos de temporada con el sistema de carrito
-document.addEventListener("DOMContentLoaded", () => {
-  const botonesComprar = document.querySelectorAll(".btn-temporada");
-  const listaCarrito = document.getElementById("lista-carrito");
-  const totalCarrito = document.getElementById("total-carrito");
-  const btnVaciar = document.getElementById("vaciar-carrito");
-  const contenedorCarrito = document.getElementById("carrito-detalle");
-
-  const actualizarCantidadCarrito = () => {
-    const carrito = obtenerCarrito();
-    const totalCantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-    const badge = document.getElementById("cantidad-carrito");
-    if (badge) {
-      badge.textContent = totalCantidad;
-    }
-  };
-
-  const renderizarCarrito = () => {
-    const carrito = obtenerCarrito();
-    listaCarrito.innerHTML = "";
-    let total = 0;
-
-    carrito.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = `${item.nombre} x${item.cantidad} - $${
-        item.precio * item.cantidad
-      }`;
-      listaCarrito.appendChild(li);
-      total += item.precio * item.cantidad;
-    });
-
-    totalCarrito.textContent = `$${total.toLocaleString()}`;
-    contenedorCarrito.style.display = carrito.length ? "block" : "none";
-  };
-
-  botonesComprar.forEach((boton) => {
-    boton.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = parseInt(boton.dataset.id);
-      const nombre = boton.dataset.nombre;
-      const precio = parseFloat(boton.dataset.precio);
-
-      const producto = {
-        id,
-        nombre,
-        precio,
-      };
-
-      agregarAlCarrito(producto);
-      actualizarCantidadCarrito();
-      renderizarCarrito();
-      contenedorCarrito.style.display = "block"; // Mostrar panel al agregar
-      alert(`${nombre} fue agregado al carrito 🛒`);
-    });
-  });
-
-  btnVaciar.addEventListener("click", () => {
-    vaciarCarrito();
-    actualizarCantidadCarrito();
-    renderizarCarrito();
-  });
-
-  const carritoIcono = document.querySelector(".carrito-icono");
-  if (carritoIcono && contenedorCarrito) {
-    carritoIcono.addEventListener("click", (e) => {
-      e.preventDefault();
-      contenedorCarrito.style.display =
-        contenedorCarrito.style.display === "block" ? "none" : "block";
-    });
-  }
-
   actualizarCantidadCarrito();
   renderizarCarrito();
+};
+
+// Eliminar producto
+const eliminarDelCarrito = (id) => {
+  carrito = carrito.filter((item) => item.id !== id);
+  actualizarCantidadCarrito();
+  renderizarCarrito();
+};
+
+// Vaciar carrito
+const vaciarCarrito = () => {
+  carrito = [];
+  actualizarCantidadCarrito();
+  renderizarCarrito();
+};
+
+// Actualizar contador badge
+const actualizarCantidadCarrito = () => {
+  const totalCantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  const badge = document.getElementById("cantidad-carrito");
+  if (badge) badge.textContent = totalCantidad;
+};
+
+// Renderizar lista en DOM
+const renderizarCarrito = () => {
+  const lista = document.getElementById("lista-carrito");
+  const total = document.getElementById("total-carrito");
+  const panel = document.getElementById("carrito-detalle");
+
+  if (!lista || !total || !panel) return;
+
+  lista.innerHTML = "";
+  let suma = 0;
+
+  carrito.forEach((item) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <strong>${item.nombre}</strong> x${item.cantidad} - $${(
+      item.precio * item.cantidad
+    ).toLocaleString()}
+    `;
+    lista.appendChild(li);
+    suma += item.precio * item.cantidad;
+  });
+
+  total.textContent = `$${suma.toLocaleString()}`;
+  panel.style.display = carrito.length ? "block" : "none";
+};
+
+// Inicializar eventos
+document.addEventListener("DOMContentLoaded", () => {
+  // Asegurarse que todos los botones .btn-temporada sean <a> o tengan type="button" si son <button>
+  const botones = document.querySelectorAll(".btn-temporada");
+  botones.forEach((btn) => {
+    if (btn.tagName === "BUTTON" && !btn.hasAttribute("type")) {
+      btn.setAttribute("type", "button");
+    }
+  });
+  const iconoCarrito = document.querySelector(".carrito-icono");
+  const panelCarrito = document.getElementById("carrito-detalle");
+  const btnVaciar = document.getElementById("vaciar-carrito");
+
+  botones.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = parseInt(btn.dataset.id);
+      const nombre = btn.dataset.nombre;
+      const precio = parseFloat(btn.dataset.precio);
+
+      agregarAlCarrito({ id, nombre, precio });
+      panelCarrito?.classList.add("visible");
+    });
+  });
+
+  iconoCarrito?.addEventListener("click", (e) => {
+    e.preventDefault();
+    panelCarrito?.classList.toggle("visible");
+  });
+
+  btnVaciar?.addEventListener("click", () => {
+    vaciarCarrito();
+  });
 });
