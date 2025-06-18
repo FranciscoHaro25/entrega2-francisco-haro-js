@@ -1,0 +1,22 @@
+/* Estilo para el encabezado */
+header {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Estilo para los enlaces de navegación */
+nav a {
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* Estilo para el contenido principal */
+section {
+  margin-top: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
