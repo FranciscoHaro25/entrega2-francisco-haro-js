@@ -71,3 +71,37 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarPaso(2);
   });
 });
+
+// LLENADO DE PROVINCIAS Y CANTONES EN SELECTS
+fetch("../assets/data/provincias.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const selProvincia = document.getElementById("provincia");
+    const selCanton = document.getElementById("canton");
+
+    // Agrega las provincias al <select>
+    data.provincias.forEach((prov) => {
+      const opt = document.createElement("option");
+      opt.value = prov.nombre;
+      opt.textContent = prov.nombre;
+      selProvincia.appendChild(opt);
+    });
+
+    // Agrega cantones al cambiar de provincia
+    selProvincia.addEventListener("change", () => {
+      const provinciaSeleccionada = data.provincias.find(
+        (p) => p.nombre === selProvincia.value
+      );
+
+      selCanton.innerHTML = '<option value="">Seleccione un cantón</option>';
+
+      if (provinciaSeleccionada) {
+        provinciaSeleccionada.cantones.forEach((canton) => {
+          const opt = document.createElement("option");
+          opt.value = canton;
+          opt.textContent = canton;
+          selCanton.appendChild(opt);
+        });
+      }
+    });
+  });

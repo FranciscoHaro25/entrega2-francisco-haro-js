@@ -50,55 +50,68 @@
 
         <!-- Paso 2 -->
         <section id="paso-2" class="paso-contenido oculto">
-          <h2>Dirección de entrega</h2>
-          <form id="form-paso-2">
-            <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" required />
+          <div class="formulario-login">
+            <h2>Dirección de entrega</h2>
+            <form id="form-paso-2">
+              <label for="direccion">Dirección</label>
+              <input type="text" id="direccion" required />
 
-            <label for="ciudad">Ciudad</label>
-            <input type="text" id="ciudad" required />
+              <label for="provincia">Provincia</label>
+              <select id="provincia" required>
+                <option value="">Seleccione una provincia</option>
+              </select>
 
-            <label for="codigo-postal">Código Postal</label>
-            <input type="text" id="codigo-postal" required />
+              <label for="canton">Cantón</label>
+              <select id="canton" required>
+                <option value="">Seleccione un cantón</option>
+              </select>
 
-            <button type="submit" class="btn-principal">CONTINUAR</button>
-          </form>
+              <label for="codigo-postal">Código Postal</label>
+              <input type="text" id="codigo-postal" required />
+
+              <button type="submit" class="btn-principal">CONTINUAR</button>
+            </form>
+          </div>
         </section>
 
         <!-- Paso 3 -->
         <section id="paso-3" class="paso-contenido oculto">
-          <h2>Método de Envío</h2>
-          <form id="form-paso-3">
-            <label>
-              <input type="radio" name="envio" value="estandar" checked />
-              Envío estándar - Gratis </label
-            ><br />
-            <label>
-              <input type="radio" name="envio" value="express" />
-              Envío express - $5.99
-            </label>
+          <div class="formulario-login">
+            <h2>Método de Envío</h2>
+            <form id="form-paso-3">
+              <label>
+                <input type="radio" name="envio" value="estandar" checked />
+                Envío estándar - Gratis </label
+              ><br />
+              <label>
+                <input type="radio" name="envio" value="express" />
+                Envío express - $5.99
+              </label>
 
-            <button type="submit" class="btn-principal">CONTINUAR</button>
-          </form>
+              <button type="submit" class="btn-principal">CONTINUAR</button>
+            </form>
+          </div>
         </section>
 
         <!-- Paso 4 -->
         <section id="paso-4" class="paso-contenido oculto">
-          <h2>Pago</h2>
-          <form id="form-paso-4">
-            <label for="tarjeta">Número de tarjeta</label>
-            <input type="text" id="tarjeta" required />
+          <div class="formulario-login">
+            <h2>Pago</h2>
+            <form id="form-paso-4">
+              <label for="tarjeta">Número de tarjeta</label>
+              <input type="text" id="tarjeta" required />
 
-            <label for="vencimiento">Fecha de vencimiento</label>
-            <input type="text" id="vencimiento" required />
+              <label for="vencimiento">Fecha de vencimiento</label>
+              <input type="text" id="vencimiento" required />
 
-            <label for="cvv">CVV</label>
-            <input type="text" id="cvv" required />
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" required />
 
-            <button type="submit" class="btn-principal">
-              FINALIZAR PEDIDO
-            </button>
-          </form>
+              <button type="submit" class="btn-principal">
+                FINALIZAR PEDIDO
+              </button>
+            </form>
+          </div>
         </section>
 
         <!-- Columna derecha: Resumen -->
