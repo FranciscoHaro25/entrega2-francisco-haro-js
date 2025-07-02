@@ -1166,3 +1166,255 @@ body {
 .carrito-detalle.visible {
   display: block;
 }
+
+.btn-carrito {
+  background-color: var(--color-secundario);
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-carrito:hover {
+  background-color: #d9771b;
+}
+
+.btn-carrito.outline {
+  background-color: white;
+  color: var(--color-secundario);
+  border: 2px solid var(--color-secundario);
+}
+
+/* SPA */
+/* .paso {
+  display: none;
+}
+
+.paso.visible {
+  display: block;
+} */
+
+/* === RESET LOCAL === */
+.paso-contenido {
+  display: none;
+}
+
+.paso-contenido.visible {
+  display: block;
+}
+
+.paso-contenido.oculto {
+  display: none;
+}
+
+/* === PROGRESO PASOS === */
+.progreso-pasos {
+  margin-bottom: 3rem;
+}
+
+.progreso-pasos .pasos {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.progreso-pasos .paso-barra {
+  flex: 1;
+  text-align: center;
+  padding: 1rem 0;
+  color: #999;
+  font-weight: bold;
+  position: relative;
+  font-size: 1.4rem;
+}
+
+.progreso-pasos .paso-barra.activo {
+  color: var(--color-secundario);
+}
+
+.progreso-pasos .paso-barra::before {
+  content: attr(data-paso);
+  display: block;
+  margin: 0 auto 0.5rem;
+  background-color: #ccc;
+  color: white;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  line-height: 2.4rem;
+  font-size: 1.2rem;
+}
+
+.progreso-pasos .paso-barra.activo::before {
+  background-color: var(--color-secundario);
+}
+
+/* === FORMULARIOS === */
+.formulario-login,
+.formulario-direccion,
+.formulario-envio,
+.formulario-pago {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.formulario-login h2,
+.formulario-direccion h2,
+.formulario-envio h2,
+.formulario-pago h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primario);
+}
+
+form label {
+  font-weight: 600;
+  margin-top: 1rem;
+  display: block;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.campo-password {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.campo-password button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+/* === BOTONES === */
+.btn-principal,
+.btn-invitado {
+  display: block;
+  width: 100%;
+  background-color: var(--color-secundario);
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-principal:hover,
+.btn-invitado:hover {
+  background-color: #d9771b;
+}
+
+.link-secundario {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b90000;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+/* === RESUMEN DEL PEDIDO === */
+.resumen-pedido {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  font-size: 1.4rem;
+}
+
+.resumen-pedido h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.linea-resumen {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.total-final {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  color: #c0392b;
+  margin-top: 1rem;
+}
+
+.mostrar-detalles {
+  font-size: 1.3rem;
+  text-decoration: underline;
+  color: var(--color-primario);
+  cursor: pointer;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .checkout-grid {
+    flex-direction: column;
+  }
+
+  .resumen-pedido {
+    margin-top: 2rem;
+  }
+}
+
+/* === CHECKOUT TWO COLUMN LAYOUT === */
+.checkout-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Columna principal: pasos del checkout */
+.paso-contenido {
+  flex: 3;
+}
+
+/* Columna secundaria: resumen del pedido */
+.carrito-resumen {
+  flex: 2;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+  }
+
+  .carrito-resumen {
+    margin-top: 2rem;
+  }
+}

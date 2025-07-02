@@ -242,7 +242,7 @@
     <!--       PRODUCTOS DE TEMPORADA             -->
     <!-- ======================================== -->
 
-    <section class="productos-temporada contenedor">
+    <section id="productos" class="productos-temporada contenedor">
       <h2 class="titulo-seccion text-center">Nuestros Productos</h2>
       <div class="grid-temporada"></div>
     </section>
@@ -350,12 +350,16 @@
       </div>
     </footer>
 
+    <!-- SweetAlert2 primero -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts internos -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/slider.js"></script>
-    <script src="./assets/js/carrito.js"></script>
     <script src="/assets/js/renderProductos.js"></script>
-    <!-- Inicializar AOS -->
+    <script src="../assets/js/carrito.js"></script>
+
+    <!-- AOS al final -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();

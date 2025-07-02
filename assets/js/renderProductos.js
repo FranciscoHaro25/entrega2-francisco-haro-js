@@ -83,19 +83,79 @@ document.querySelector(".carrito-icono")?.addEventListener("click", (e) => {
 });
 
 // Mostrar los productos dentro del carrito
+// function renderizarCarrito() {
+//   const lista = document.getElementById("lista-carrito");
+//   if (!lista) return;
+
+//   lista.innerHTML = "";
+//   carrito.forEach((item) => {
+//     const li = document.createElement("li");
+//     li.innerHTML = `
+//       <strong>${item.nombre}</strong> x ${item.cantidad}
+//       <span style="float:right">$${(
+//         item.precio * item.cantidad
+//       ).toLocaleString()}</span>
+//     `;
+//     lista.appendChild(li);
+//   });
+// }
+
 function renderizarCarrito() {
   const lista = document.getElementById("lista-carrito");
-  if (!lista) return;
+  const panel = document.getElementById("carrito-detalle");
+  if (!lista || !panel) return;
 
   lista.innerHTML = "";
+  let total = 0;
+
   carrito.forEach((item) => {
     const li = document.createElement("li");
+    li.style.display = "flex";
+    li.style.justifyContent = "space-between";
+    li.style.marginBottom = "1rem";
     li.innerHTML = `
       <strong>${item.nombre}</strong> x ${item.cantidad}
-      <span style="float:right">$${(
-        item.precio * item.cantidad
-      ).toLocaleString()}</span>
+      <span>$${(item.precio * item.cantidad).toLocaleString()}</span>
     `;
     lista.appendChild(li);
+    total += item.precio * item.cantidad;
   });
+
+  // Contenedor de resumen y botones
+  const footer = document.createElement("div");
+  footer.style.borderTop = "1px solid #ddd";
+  footer.style.marginTop = "1.5rem";
+  footer.style.paddingTop = "1rem";
+
+  const totalTexto = document.createElement("p");
+  totalTexto.style.fontWeight = "bold";
+  totalTexto.style.fontSize = "1.4rem";
+  totalTexto.style.marginBottom = "1rem";
+  totalTexto.textContent = `Total: $${total.toLocaleString()}`;
+
+  // Botón 1: Vaciar carrito
+  const btnVaciar = document.createElement("button");
+  btnVaciar.textContent = "🗑 Vaciar Carrito";
+  btnVaciar.className = "btn-carrito outline";
+  btnVaciar.style.marginBottom = "0.8rem";
+  btnVaciar.style.width = "100%";
+  btnVaciar.onclick = () => {
+    carrito = [];
+    actualizarCarrito();
+    renderizarCarrito();
+  };
+
+  // Botón 2: Ir al Checkout
+  const btnCheckout = document.createElement("a");
+  btnCheckout.textContent = "✅ Finalizar Compra";
+  btnCheckout.href = "/pages/carrito.html";
+  btnCheckout.className = "btn-carrito";
+  btnCheckout.style.display = "inline-block";
+  btnCheckout.style.width = "100%";
+  btnCheckout.style.textAlign = "center";
+
+  footer.appendChild(totalTexto);
+  footer.appendChild(btnVaciar);
+  footer.appendChild(btnCheckout);
+  lista.appendChild(footer);
 }
