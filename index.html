@@ -67,6 +67,11 @@
           </a>
         </div>
       </div>
+
+      <!-- Panel lateral del carrito -->
+      <div id="carrito-detalle" class="carrito-detalle">
+        <ul id="lista-carrito"></ul>
+      </div>
     </header>
 
     <!-- ======================================== -->
@@ -236,207 +241,11 @@
     <!-- ======================================== -->
     <!--       PRODUCTOS DE TEMPORADA             -->
     <!-- ======================================== -->
-    <section class="temporada contenedor">
-      <h2 class="titulo-seccion text-center">Productos de Temporada</h2>
 
-      <div class="grid-temporada">
-        <div class="card-producto">
-          <img
-            src="/assets/img/image/image-1.jpg"
-            alt="BRNX Cama Palta Lover"
-          />
-          <p class="marca">BRNX</p>
-          <h3>BRNX Cama Palta Lover</h3>
-          <div class="rating">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="#f39c12"
-              width="16"
-              height="16"
-            >
-              <path
-                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
-              />
-            </svg>
-            <span>5 reviews</span>
-          </div>
-          <p class="precio">$12.790</p>
-          <button
-            type="button"
-            class="btn-temporada"
-            data-id="1"
-            data-nombre="BRNX Cama Palta Lover"
-            data-precio="12790"
-          >
-            Comprar
-          </button>
-        </div>
-
-        <div class="card-producto">
-          <img
-            src="/assets/img/image/image-2.jpg"
-            alt="Cama Antiestrés para Gato"
-          />
-          <p class="marca">Marbenpets</p>
-          <h3>Cama Antiestrés para Gato</h3>
-          <div class="rating">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="#f39c12"
-              width="16"
-              height="16"
-            >
-              <path
-                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
-              />
-            </svg>
-            <span>2 reviews</span>
-          </div>
-          <p class="precio">$19.990</p>
-          <button
-            type="button"
-            class="btn-temporada"
-            data-id="2"
-            data-nombre="Cama Antiestrés para Gato"
-            data-precio="19990"
-          >
-            Comprar
-          </button>
-        </div>
-
-        <div class="card-producto">
-          <img
-            src="/assets/img/image/image-3.jpg"
-            alt="Gigwi Cojín Cama Gato"
-          />
-          <p class="marca">Gigwi</p>
-          <h3>Gigwi Cojín Cama Gato</h3>
-          <div class="rating">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="#f39c12"
-              width="16"
-              height="16"
-            >
-              <path
-                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
-              />
-            </svg>
-            <span>5 reviews</span>
-          </div>
-          <p class="precio">$22.990</p>
-          <button
-            type="button"
-            class="btn-temporada"
-            data-id="3"
-            data-nombre="Gigwi Cojín Cama Gato"
-            data-precio="22990"
-          >
-            Comprar
-          </button>
-        </div>
-
-        <div class="card-producto">
-          <img
-            src="/assets/img/image/image-4.jpg"
-            alt="Refugio Rascador Casa Azul"
-          />
-          <p class="marca">Marbenpets</p>
-          <h3>Refugio Rascador Casa Azul</h3>
-          <div class="rating">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="#f39c12"
-              width="16"
-              height="16"
-            >
-              <path
-                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
-              />
-            </svg>
-            <span>0 review</span>
-          </div>
-          <p class="precio">$12.990</p>
-          <button
-            type="button"
-            class="btn-temporada"
-            data-id="4"
-            data-nombre="Refugio Rascador Casa Azul"
-            data-precio="12990"
-          >
-            Comprar
-          </button>
-        </div>
-
-        <div class="card-producto">
-          <img src="/assets/img/image/image-5.jpg" alt="Orijen Original Cat" />
-          <p class="marca">Orijen</p>
-          <h3>Orijen Original Cat</h3>
-          <div class="rating">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="#f39c12"
-              width="16"
-              height="16"
-            >
-              <path
-                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
-              />
-            </svg>
-            <span>65 reviews</span>
-          </div>
-          <p class="precio">Desde $30.990</p>
-          <button
-            type="button"
-            class="btn-temporada"
-            data-id="5"
-            data-nombre="Orijen Original Cat"
-            data-precio="30990"
-          >
-            Comprar
-          </button>
-        </div>
-
-        <div class="card-producto">
-          <img
-            src="/assets/img/image/image-6.jpg"
-            alt="Leonardo Fresh Meat Ternera"
-          />
-          <p class="marca">Leonardo</p>
-          <h3>Leonardo Fresh Meat Ternera</h3>
-          <div class="rating">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-              fill="#f39c12"
-              width="16"
-              height="16"
-            >
-              <path
-                d="M287.9 17.8L354 150l136.9 20c26.2 3.8 36.7 36 17.7 54.6l-99 96.5 23.4 136.6c4.5 26.2-23 46-46.4 33.7L288 439.6l-122.6 64.5c-23.5 12.3-50.9-7.5-46.4-33.7l23.4-136.6-99-96.5c-19-18.6-8.5-50.8 17.7-54.6L222 150l66.1-132.2c11.7-23.4 45.6-23.4 57.3 0z"
-              />
-            </svg>
-            <span>6 reviews</span>
-          </div>
-          <p class="precio">Desde $27.790</p>
-          <button
-            type="button"
-            class="btn-temporada"
-            data-id="6"
-            data-nombre="Leonardo Fresh Meat Ternera"
-            data-precio="27790"
-          >
-            Comprar
-          </button>
-        </div>
-      </div>
+    <section class="productos-temporada contenedor">
+      <h2 class="titulo-seccion text-center">Nuestros Productos</h2>
+      <div class="grid-temporada"></div>
     </section>
-
     <!-- ======================================== -->
     <!--           BENEFICIOS                     -->
     <!-- ======================================== -->
@@ -541,9 +350,11 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/slider.js"></script>
     <script src="./assets/js/carrito.js"></script>
+    <script src="/assets/js/renderProductos.js"></script>
     <!-- Inicializar AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

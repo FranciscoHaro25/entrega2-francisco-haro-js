@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "nombre": "BRNX Cama Palta Lover",
+    "marca": "BRNX",
+    "precio": 12790,
+    "imagen": "/assets/img/image/image-1.jpg",
+    "reviews": 5
+  },
+  {
+    "id": 2,
+    "nombre": "Cama Antiestrés para Gato",
+    "marca": "Marbenpets",
+    "precio": 19990,
+    "imagen": "/assets/img/image/image-2.jpg",
+    "reviews": 2
+  },
+  {
+    "id": 3,
+    "nombre": "Gigwi Cojín Cama Gato",
+    "marca": "Gigwi",
+    "precio": 22990,
+    "imagen": "/assets/img/image/image-3.jpg",
+    "reviews": 5
+  },
+  {
+    "id": 4,
+    "nombre": "Refugio Rascador Casa Azul",
+    "marca": "Marbenpets",
+    "precio": 12990,
+    "imagen": "/assets/img/image/image-4.jpg",
+    "reviews": 0
+  },
+  {
+    "id": 5,
+    "nombre": "Orijen Original Cat",
+    "marca": "Orijen",
+    "precio": 30990,
+    "imagen": "/assets/img/image/image-5.jpg",
+    "reviews": 65
+  },
+  {
+    "id": 6,
+    "nombre": "Leonardo Fresh Meat Ternera",
+    "marca": "Leonardo",
+    "precio": 27790,
+    "imagen": "/assets/img/image/image-6.jpg",
+    "reviews": 6
+  }
+]

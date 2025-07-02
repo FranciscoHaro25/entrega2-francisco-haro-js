@@ -1149,3 +1149,20 @@ body {
   justify-content: space-between;
   color: #c0392b;
 }
+
+.carrito-detalle {
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 2rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 2rem;
+  z-index: 1000;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.carrito-detalle.visible {
+  display: block;
+}
