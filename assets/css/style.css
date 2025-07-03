@@ -415,7 +415,62 @@ img {
   margin-bottom: 2rem;
 }
 
-.btn-cupon {
+/* BOTON CUPO */
+
+.cupon-wrapper {
+  margin-top: 1rem;
+}
+
+.cupon-input-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.input-cupon {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.btn-aplicar-cupon {
+  background-color: #154f84;
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-aplicar-cupon:hover {
+  background-color: #0f3c65;
+}
+
+.mensaje-error-cupon {
+  color: #e53935;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.oculto {
+  display: none;
+}
+
+.mensaje-error-cupon {
+  color: #e53935;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.oculto {
+  display: none;
+}
+/* .btn-cupon {
   display: inline-block;
   background-color: var(--color-secundario);
   color: white;
@@ -428,13 +483,13 @@ img {
   width: 100%;
   max-width: 300px;
   text-align: center;
-}
+} */
 
-.btn-cupon:hover {
+/* .btn-cupon:hover {
   background-color: #d9771b;
-}
+} */
 
-.cupon-grande {
+/* .cupon-grande {
   background-color: var(--color-secundario);
   color: white;
   padding: 4rem 2rem;
@@ -444,7 +499,7 @@ img {
   text-align: center;
   width: 100%;
   max-width: 300px;
-}
+} */
 
 /* === BENEFICIOS === */
 .beneficios {
@@ -565,7 +620,7 @@ img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   z-index: 1000;
-  width: 300px;
+  width: 350px;
   max-height: 80vh;
   overflow-y: auto;
   transition: all 0.3s ease;
@@ -683,10 +738,10 @@ img {
   border-radius: 50%;
   padding: 0.2rem 0.6rem;
 }
-
+/* 
 .carrito-detalle.visible {
   display: block;
-}
+} */
 
 /* === CHECKOUT PAGE STYLES === */
 
@@ -746,11 +801,11 @@ img {
   color: var(--color-texto);
 }
 
-.carrito-detalle {
+/* .carrito-detalle {
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease, opacity 0.3s ease;
-}
+} */
 
 .carrito-detalle.visible {
   display: block;
@@ -952,7 +1007,7 @@ img {
 }
 
 .btn-cantidad.mas {
-  background-color: #1e7d1e; /* Verde Gatox */
+  background-color: var(--color-secundario);
   color: #fff;
 }
 
@@ -969,11 +1024,11 @@ img {
   color: var(--color-primario);
 }
 
-.input-cupon {
+/* .input-cupon {
   width: 100%;
   padding: 0.8rem;
   margin-bottom: 1rem;
-}
+} */
 
 .resumen-linea {
   display: flex;
@@ -1191,7 +1246,7 @@ body {
   color: #c0392b;
 }
 
-.carrito-detalle {
+/* .carrito-detalle {
   display: none;
   position: fixed;
   top: 80px;
@@ -1202,7 +1257,7 @@ body {
   z-index: 1000;
   width: 300px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .carrito-detalle.visible {
   display: block;
@@ -1375,7 +1430,7 @@ form select {
 .link-secundario {
   display: inline-block;
   margin-top: 1rem;
-  color: #b90000;
+  color: var(--color-secundario);
   text-decoration: none;
   font-size: 1.4rem;
 }
@@ -1405,7 +1460,7 @@ form select {
   font-weight: bold;
   display: flex;
   justify-content: space-between;
-  color: #c0392b;
+  color: var(--color-secundario);
   margin-top: 1rem;
 }
 
@@ -1464,7 +1519,7 @@ form select {
 
 .swal-popup-gatox {
   font-family: "Raleway", sans-serif;
-  border: 3px solid #ec6a37;
+  border: 3px solid var(--color-secundario);
   border-radius: 1rem;
   padding: 3rem;
   max-width: 600px; /* aumenta el ancho */
@@ -1484,7 +1539,7 @@ form select {
 
 /* Personalización del botón OK */
 .swal-btn-ok-gatox {
-  background-color: #ec6a37 !important;
+  background-color: var(--color-secundario) !important;
   color: white !important;
   font-weight: bold;
   border-radius: 0.5rem;
@@ -1497,6 +1552,6 @@ form select {
 }
 
 .swal-btn-ok-gatox:hover {
-  background-color: #d85b28 !important;
+  background-color: var(--color-secundario) !important;
   transform: scale(1.05);
 }

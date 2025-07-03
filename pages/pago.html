@@ -154,10 +154,25 @@
             Hay 0 artículos en su carrito.
           </h3>
 
-          <label for="cupon">
-            <strong>¿Tiene un código promocional?</strong>
-          </label>
-          <input type="text" id="cupon" class="input-cupon" />
+          <div class="cupon-wrapper">
+            <label for="cupon"
+              ><strong>¿Tiene un código promocional?</strong></label
+            >
+            <div class="cupon-input-group">
+              <input
+                type="text"
+                id="cupon"
+                class="input-cupon"
+                placeholder="Ingrese el código"
+              />
+              <button id="btn-aplicar-cupon" class="btn-aplicar-cupon">
+                Aplicar
+              </button>
+            </div>
+            <p id="mensaje-error-cupon" class="mensaje-error-cupon oculto">
+              Por favor ingrese un código promocional válido.
+            </p>
+          </div>
 
           <div class="resumen-linea">
             <span>Subtotal:</span>
@@ -179,15 +194,15 @@
             <span id="resumen-total">$0.00</span>
           </div>
 
-          <a href="../pages/pago.html" class="btn-finalizar">
-            FINALIZAR COMPRA
-          </a>
+          <!-- ✅ Contenedor de productos del carrito
+          <div id="lista-productos-carrito" class="carrito-items"></div> -->
         </aside>
       </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Script SPA -->
+    <!-- <script src="/assets/js/carrito.js"></script> -->
     <script src="/assets/js/checkout.js"></script>
   </body>
 </html>

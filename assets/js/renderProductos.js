@@ -46,6 +46,7 @@ fetch("/assets/data/productos.json")
   .then((res) => res.json())
   .then((productos) => {
     productos.forEach((producto) => {
+      const precioDolar = producto.precio.toFixed(2);
       const div = document.createElement("div");
       div.className = "card-producto";
       div.innerHTML = `
@@ -55,7 +56,7 @@ fetch("/assets/data/productos.json")
         <div class="rating">
           ⭐ ${producto.reviews} reviews
         </div>
-        <p class="precio">$${producto.precio.toLocaleString()}</p>
+        <p class="precio">$${precioDolar}</p>
         <button
           class="btn-temporada"
           data-id="${producto.id}"
@@ -67,12 +68,12 @@ fetch("/assets/data/productos.json")
       contenedor.appendChild(div);
     });
 
-    // Activar botones una vez insertado en DOM
+    // Activar botones
     document.querySelectorAll(".btn-temporada").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.dataset.id;
         const nombre = btn.dataset.nombre;
-        const precio = parseFloat(btn.dataset.precio);
+        const precio = parseInt(btn.dataset.precio); // mantiene valor en centavos
         agregarAlCarrito({ id, nombre, precio });
       });
     });
@@ -87,27 +88,9 @@ document.querySelector(".carrito-icono")?.addEventListener("click", (e) => {
   const panel = document.getElementById("carrito-detalle");
   if (panel) {
     panel.classList.toggle("visible");
-    renderizarCarrito(); // ← esta función la definimos abajo
+    renderizarCarrito();
   }
 });
-
-// Mostrar los productos dentro del carrito
-// function renderizarCarrito() {
-//   const lista = document.getElementById("lista-carrito");
-//   if (!lista) return;
-
-//   lista.innerHTML = "";
-//   carrito.forEach((item) => {
-//     const li = document.createElement("li");
-//     li.innerHTML = `
-//       <strong>${item.nombre}</strong> x ${item.cantidad}
-//       <span style="float:right">$${(
-//         item.precio * item.cantidad
-//       ).toLocaleString()}</span>
-//     `;
-//     lista.appendChild(li);
-//   });
-// }
 
 function renderizarCarrito() {
   const lista = document.getElementById("lista-carrito");
@@ -118,16 +101,20 @@ function renderizarCarrito() {
   let total = 0;
 
   carrito.forEach((item) => {
+    const precio = Number(item.precio); // ya en dólares
+    const cantidad = Number(item.cantidad);
+    const totalProducto = precio * cantidad;
+    total += totalProducto;
+
     const li = document.createElement("li");
     li.style.display = "flex";
     li.style.justifyContent = "space-between";
     li.style.marginBottom = "1rem";
     li.innerHTML = `
-      <strong>${item.nombre}</strong> x ${item.cantidad}
-      <span>$${(item.precio * item.cantidad).toLocaleString()}</span>
+      <strong>${item.nombre}</strong> x ${cantidad}
+      <span>$${totalProducto.toFixed(2)}</span>
     `;
     lista.appendChild(li);
-    total += item.precio * item.cantidad;
   });
 
   // Contenedor de resumen y botones
@@ -140,7 +127,7 @@ function renderizarCarrito() {
   totalTexto.style.fontWeight = "bold";
   totalTexto.style.fontSize = "1.4rem";
   totalTexto.style.marginBottom = "1rem";
-  totalTexto.textContent = `Total: $${total.toLocaleString()}`;
+  totalTexto.textContent = `Total: $${total.toFixed(2)}`;
 
   // Botón 1: Vaciar carrito
   const btnVaciar = document.createElement("button");

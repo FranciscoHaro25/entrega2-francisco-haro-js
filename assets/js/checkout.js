@@ -133,3 +133,26 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error al cargar provincias.json:", error);
     });
 });
+
+// RESUMEN CARRITO
+document.addEventListener("DOMContentLoaded", () => {
+  const resumenCantidad = document.getElementById("carrito-resumen-cantidad");
+  const resumenSubtotal = document.getElementById("resumen-subtotal");
+  const resumenTotal = document.getElementById("resumen-total");
+  const descuentoLinea =
+    document.querySelectorAll(".resumen-linea")[2].children[1];
+
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const envio = 1.99;
+  let subtotal = carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+
+  // Mostrar resumen en la columna derecha
+  if (resumenCantidad && resumenSubtotal && resumenTotal) {
+    resumenCantidad.textContent = `Hay ${carrito.length} artículo${
+      carrito.length !== 1 ? "s" : ""
+    } en su carrito.`;
+    resumenSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+    descuentoLinea.textContent = "$0.00";
+    resumenTotal.textContent = `$${(subtotal + envio).toFixed(2)}`;
+  }
+});

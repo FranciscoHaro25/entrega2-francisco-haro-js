@@ -5,27 +5,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const resumenSubtotal = document.getElementById("resumen-subtotal");
   const resumenTotal = document.getElementById("resumen-total");
   const inputCupon = document.getElementById("cupon");
+  const mensajeError = document.getElementById("mensaje-error-cupon");
   const descuentoLinea =
     document.querySelectorAll(".resumen-linea")[2].children[1];
 
   const cuponesValidos = {
-    GATO10: 1000,
-    FELINOS5: 500,
-    SUPER20: 2000,
+    GATO10: 10.0, // $10.00
+    FELINOS5: 5.0, // $5.00
+    SUPER20: 20.0, // $20.00
   };
 
+  const envio = 1.99; // en centavos
   let cuponAplicado = "";
 
+  // Renderizar productos del carrito
   function renderizarCarrito() {
     contenedor.innerHTML = "";
     let subtotal = 0;
 
     carrito.forEach((item) => {
-      const div = document.createElement("div");
-      div.className = "producto-carrito";
-      const totalProducto = item.precio * item.cantidad;
+      const precio = Number(item.precio); // ya está en centavos
+      const cantidad = Number(item.cantidad);
+      const totalProducto = precio * cantidad;
       subtotal += totalProducto;
 
+      const div = document.createElement("div");
+      div.className = "producto-carrito";
       div.innerHTML = `
         <div class="producto-detalle">
           <img src="/assets/img/image/image-${item.id}.jpg" alt="${
@@ -33,32 +38,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }" />
           <div class="producto-info">
             <p class="nombre">${item.nombre}</p>
-            <p class="precio">$${item.precio.toLocaleString()} x ${
-        item.cantidad
-      }</p>
-            <p class="precio-total"><strong>Total:</strong> $${totalProducto.toLocaleString()}</p>
-
-            
+            <p class="precio">$${precio.toFixed(2)} x ${cantidad}</p>
+            <p class="precio-total"><strong>Total:</strong> $${totalProducto.toFixed(
+              2
+            )}</p>
           </div>
           <div class="contador-cantidad">
-              <button class="btn-cantidad menos" data-id="${item.id}">−</button>
-              <span class="cantidad-num">${item.cantidad}</span>
-              <button class="btn-cantidad mas" data-id="${item.id}">+</button>
-            </div>
+            <button class="btn-cantidad menos" data-id="${item.id}">−</button>
+            <span class="cantidad-num">${cantidad}</span>
+            <button class="btn-cantidad mas" data-id="${item.id}">+</button>
+          </div>
         </div>
       `;
       contenedor.appendChild(div);
     });
 
-    const envio = 199;
+    // Mostrar resumen
     resumenCantidad.textContent = `Hay ${carrito.length} artículo${
       carrito.length !== 1 ? "s" : ""
     } en su carrito.`;
-    resumenSubtotal.textContent = `$${(subtotal / 100).toFixed(2)}`;
+    resumenSubtotal.textContent = `$${subtotal.toFixed(2)}`;
     descuentoLinea.textContent = "$0.00";
-    resumenTotal.textContent = `$${((subtotal + envio) / 100).toFixed(2)}`;
+    resumenTotal.textContent = `$${(subtotal + envio).toFixed(2)}`;
 
-    // Asignar eventos a los botones de cantidad recién generados
+    // Botones de cantidad
     document.querySelectorAll(".btn-cantidad").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const id = e.target.dataset.id;
@@ -80,44 +83,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  inputCupon.addEventListener("input", () => {
+  // Aplicar cupón
+  const btnAplicarCupon = document.getElementById("btn-aplicar-cupon");
+  btnAplicarCupon?.addEventListener("click", () => {
     const codigo = inputCupon.value.trim().toUpperCase();
-    const envio = 199;
     let subtotal = carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+
+    if (!codigo) {
+      mensajeError.textContent = "Por favor ingrese un código promocional.";
+      mensajeError.classList.remove("oculto");
+      return;
+    }
+
+    mensajeError.classList.add("oculto");
 
     if (cuponesValidos[codigo] && codigo !== cuponAplicado) {
       const descuento = cuponesValidos[codigo];
       const totalFinal = subtotal + envio - descuento;
 
-      descuentoLinea.textContent = `-$${(descuento / 100).toFixed(2)}`;
-      resumenTotal.textContent = `$${(totalFinal / 100).toFixed(2)}`;
+      descuentoLinea.textContent = `-$${descuento.toFixed(2)}`;
+      resumenTotal.textContent = `$${totalFinal.toFixed(2)}`;
       cuponAplicado = codigo;
 
       Swal.fire({
         icon: "success",
         title: "Cupón aplicado 🎉",
-        html: `<strong>¡Descuento activo!</strong><br>Se descontaron <b>$${(
-          descuento / 100
-        ).toFixed(2)}</b> de tu compra`,
+        html: `<strong>¡Descuento activo!</strong><br>Se descontaron <b>$${descuento.toFixed(
+          2
+        )}</b> de tu compra`,
         background: "#fff7f0",
         color: "#333",
         timer: 2500,
         timerProgressBar: true,
         showConfirmButton: false,
-        iconColor: "#EC6A37",
+        iconColor: "var(--color-secundario)",
         customClass: {
           popup: "swal-popup-gatox",
           title: "swal-title-gatox",
           htmlContainer: "swal-html-gatox",
         },
       });
-    } else if (!cuponesValidos[codigo]) {
+    } else {
       cuponAplicado = "";
       descuentoLinea.textContent = "$0.00";
-      resumenTotal.textContent = `$${((subtotal + envio) / 100).toFixed(2)}`;
+      resumenTotal.textContent = `$${(subtotal + envio).toFixed(2)}`;
+      mensajeError.textContent = "El código ingresado no es válido.";
+      mensajeError.classList.remove("oculto");
     }
   });
 
-  // inicializar todo
+  // Inicializar
   renderizarCarrito();
 });
