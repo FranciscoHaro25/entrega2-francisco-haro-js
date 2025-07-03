@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const secciones = document.querySelectorAll(".paso-contenido");
   let pasoActual = 1;
 
-  // Función para mostrar el paso actual
   const mostrarPaso = (numero) => {
     secciones.forEach((section, index) => {
       section.classList.toggle("visible", index === numero - 1);
@@ -32,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Validaciones y navegación paso a paso
   const avanzarPaso = (formId, siguientePaso) => {
     const form = document.getElementById(formId);
+    if (!form) return;
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (form.checkValidity()) {
@@ -46,62 +46,90 @@ document.addEventListener("DOMContentLoaded", () => {
   avanzarPaso("form-paso-2", 3);
   avanzarPaso("form-paso-3", 4);
 
-  // Paso 4: Finalizar pedido
-  const formPaso4 = document.getElementById("form-paso-4");
-  formPaso4.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // alert("formulario enviado"); // prueba
-    if (formPaso4.checkValidity()) {
-      Swal.fire({
-        icon: "success",
-        title: "¡Pedido realizado! 🎉",
-        text: "Gracias por tu compra. En breve recibirás un correo con los detalles del envío.",
-        confirmButtonText: "OK",
-      }).then(() => {
-        localStorage.removeItem("carrito");
-        window.location.href = "/index.html";
-      });
-    } else {
-      formPaso4.reportValidity();
-    }
-  });
-
   // Opción de continuar como invitado
-  document.querySelector(".btn-invitado")?.addEventListener("click", () => {
-    mostrarPaso(2);
-  });
-});
-
-// LLENADO DE PROVINCIAS Y CANTONES EN SELECTS
-fetch("../assets/data/provincias.json")
-  .then((res) => res.json())
-  .then((data) => {
-    const selProvincia = document.getElementById("provincia");
-    const selCanton = document.getElementById("canton");
-
-    // Agrega las provincias al <select>
-    data.provincias.forEach((prov) => {
-      const opt = document.createElement("option");
-      opt.value = prov.nombre;
-      opt.textContent = prov.nombre;
-      selProvincia.appendChild(opt);
+  const btnInvitado = document.querySelector(".btn-invitado");
+  if (btnInvitado) {
+    btnInvitado.addEventListener("click", () => {
+      mostrarPaso(2);
     });
+  }
 
-    // Agrega cantones al cambiar de provincia
-    selProvincia.addEventListener("change", () => {
-      const provinciaSeleccionada = data.provincias.find(
-        (p) => p.nombre === selProvincia.value
-      );
+  // Finalizar pedido con SweetAlert personalizado
+  const formPaso4 = document.getElementById("form-paso-4");
+  if (formPaso4) {
+    formPaso4.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-      selCanton.innerHTML = '<option value="">Seleccione un cantón</option>';
-
-      if (provinciaSeleccionada) {
-        provinciaSeleccionada.cantones.forEach((canton) => {
-          const opt = document.createElement("option");
-          opt.value = canton;
-          opt.textContent = canton;
-          selCanton.appendChild(opt);
+      if (formPaso4.checkValidity()) {
+        Swal.fire({
+          icon: "success",
+          title: "¡Pedido realizado! 🎉",
+          html: `<strong>Gracias por tu compra</strong><br>En breve recibirás un correo con los detalles del envío.`,
+          background: "#fff7f0",
+          color: "#333",
+          iconColor: "#EC6A37",
+          confirmButtonText: "OK",
+          customClass: {
+            popup: "swal-popup-gatox",
+            title: "swal-title-gatox",
+            htmlContainer: "swal-html-gatox",
+            confirmButton: "swal-btn-ok-gatox",
+          },
+        }).then(() => {
+          localStorage.removeItem("carrito");
+          window.location.href = "/index.html";
         });
+      } else {
+        formPaso4.reportValidity();
       }
     });
-  });
+  }
+
+  // ===============================
+  // LLENADO DE PROVINCIAS Y CANTONES
+  // ===============================
+  fetch("../assets/data/provincias.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const selProvincia = document.getElementById("provincia");
+      const selCanton = document.getElementById("canton");
+      if (!selProvincia || !selCanton) return;
+
+      // Función para limpiar y añadir placeholder
+      const limpiarSelect = (select, placeholder) => {
+        select.innerHTML = "";
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = placeholder;
+        select.appendChild(opt);
+      };
+
+      // Cargar provincias
+      data.provincias.forEach((prov) => {
+        const opt = document.createElement("option");
+        opt.value = prov.nombre;
+        opt.textContent = prov.nombre;
+        selProvincia.appendChild(opt);
+      });
+
+      // Cargar cantones al cambiar de provincia
+      selProvincia.addEventListener("change", () => {
+        const provinciaSeleccionada = data.provincias.find(
+          (p) => p.nombre === selProvincia.value
+        );
+        limpiarSelect(selCanton, "Seleccione un cantón");
+
+        if (provinciaSeleccionada) {
+          provinciaSeleccionada.cantones.forEach((canton) => {
+            const opt = document.createElement("option");
+            opt.value = canton;
+            opt.textContent = canton;
+            selCanton.appendChild(opt);
+          });
+        }
+      });
+    })
+    .catch((error) => {
+      console.error("Error al cargar provincias.json:", error);
+    });
+});

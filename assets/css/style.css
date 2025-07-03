@@ -875,6 +875,10 @@ img {
 
 .producto-info {
   flex: 1;
+  margin: 0;
+}
+.producto-info p {
+  margin: 0;
 }
 
 .producto-info .nombre {
@@ -915,6 +919,41 @@ img {
   border-radius: 0.5rem;
   width: 100%;
   font-weight: bold;
+}
+
+/* STYLES RESUMEN CARRITO  */
+
+.contador-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-cantidad {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-cantidad:active {
+  transform: scale(0.95);
+}
+
+.btn-cantidad.menos {
+  background-color: #f9f6f2;
+  color: #555;
+  border: 1px solid #ccc;
+}
+
+.btn-cantidad.mas {
+  background-color: #1e7d1e; /* Verde Gatox */
+  color: #fff;
 }
 
 .carrito-resumen {
@@ -1419,4 +1458,45 @@ form select {
   .carrito-resumen {
     margin-top: 2rem;
   }
+}
+
+/* PERSONALIZACIÓN SWEET ALERT */
+
+.swal-popup-gatox {
+  font-family: "Raleway", sans-serif;
+  border: 3px solid #ec6a37;
+  border-radius: 1rem;
+  padding: 3rem;
+  max-width: 600px; /* aumenta el ancho */
+  font-size: 1.6rem; /* agranda todo el contenido */
+}
+
+.swal-title-gatox {
+  font-size: 2.4rem; /* título más grande */
+  color: #154f84;
+  margin-bottom: 1rem;
+}
+
+.swal-html-gatox {
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+
+/* Personalización del botón OK */
+.swal-btn-ok-gatox {
+  background-color: #ec6a37 !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  padding: 0.9rem 2rem;
+  font-size: 1.6rem;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.swal-btn-ok-gatox:hover {
+  background-color: #d85b28 !important;
+  transform: scale(1.05);
 }

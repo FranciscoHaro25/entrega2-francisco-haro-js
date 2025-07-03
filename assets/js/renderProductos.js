@@ -25,10 +25,19 @@ const agregarAlCarrito = ({ id, nombre, precio }) => {
   actualizarCarrito();
   Swal.fire({
     icon: "success",
-    title: "Agregado",
-    text: `"${nombre}" fue agregado al carrito`,
-    timer: 1500,
+    title: "¡Producto agregado! 🛒",
+    html: `<strong>"${nombre}"</strong> se ha añadido correctamente al carrito.`,
+    background: "#fff7f0",
+    color: "#333",
+    iconColor: "#EC6A37",
+    timer: 1800,
+    timerProgressBar: true,
     showConfirmButton: false,
+    customClass: {
+      popup: "swal-popup-gatox",
+      title: "swal-title-gatox",
+      htmlContainer: "swal-html-gatox",
+    },
   });
 };
 
