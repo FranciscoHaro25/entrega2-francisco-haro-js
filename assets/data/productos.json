@@ -46,5 +46,165 @@
     "precio": 277.9,
     "imagen": "/assets/img/image/image-6.jpg",
     "reviews": 6
+  },
+  {
+    "id": 7,
+    "nombre": "Producto Gato 7",
+    "marca": "CatHouse",
+    "precio": 107.0,
+    "imagen": "/assets/img/image/image-7.jpg",
+    "reviews": 73
+  },
+  {
+    "id": 8,
+    "nombre": "Producto Gato 8",
+    "marca": "Gatox",
+    "precio": 260.36,
+    "imagen": "/assets/img/image/image-8.jpg",
+    "reviews": 42
+  },
+  {
+    "id": 9,
+    "nombre": "Producto Gato 9",
+    "marca": "CatHouse",
+    "precio": 239.41,
+    "imagen": "/assets/img/image/image-9.jpg",
+    "reviews": 98
+  },
+  {
+    "id": 10,
+    "nombre": "Producto Gato 10",
+    "marca": "MiauPet",
+    "precio": 319.15,
+    "imagen": "/assets/img/image/image-10.jpg",
+    "reviews": 9
+  },
+  {
+    "id": 11,
+    "nombre": "Producto Gato 11",
+    "marca": "PetLife",
+    "precio": 357.56,
+    "imagen": "/assets/img/image/image-11.jpg",
+    "reviews": 47
+  },
+  {
+    "id": 12,
+    "nombre": "Producto Gato 12",
+    "marca": "Gatox",
+    "precio": 282.01,
+    "imagen": "/assets/img/image/image-12.jpg",
+    "reviews": 76
+  },
+  {
+    "id": 13,
+    "nombre": "Producto Gato 13",
+    "marca": "MiauPet",
+    "precio": 255.72,
+    "imagen": "/assets/img/image/image-13.jpg",
+    "reviews": 52
+  },
+  {
+    "id": 14,
+    "nombre": "Producto Gato 14",
+    "marca": "Gatox",
+    "precio": 170.9,
+    "imagen": "/assets/img/image/image-14.jpg",
+    "reviews": 79
+  },
+  {
+    "id": 15,
+    "nombre": "Producto Gato 15",
+    "marca": "PetLife",
+    "precio": 206.66,
+    "imagen": "/assets/img/image/image-15.jpg",
+    "reviews": 3
+  },
+  {
+    "id": 16,
+    "nombre": "Producto Gato 16",
+    "marca": "PetLife",
+    "precio": 161.5,
+    "imagen": "/assets/img/image/image-16.jpg",
+    "reviews": 15
+  },
+  {
+    "id": 17,
+    "nombre": "Producto Gato 17",
+    "marca": "MiauPet",
+    "precio": 272.28,
+    "imagen": "/assets/img/image/image-17.jpg",
+    "reviews": 18
+  },
+  {
+    "id": 18,
+    "nombre": "Producto Gato 18",
+    "marca": "PetLife",
+    "precio": 166.6,
+    "imagen": "/assets/img/image/image-18.jpg",
+    "reviews": 15
+  },
+  {
+    "id": 19,
+    "nombre": "Producto Gato 19",
+    "marca": "MiauPet",
+    "precio": 122.01,
+    "imagen": "/assets/img/image/image-19.jpg",
+    "reviews": 94
+  },
+  {
+    "id": 20,
+    "nombre": "Producto Gato 20",
+    "marca": "PetLife",
+    "precio": 288.73,
+    "imagen": "/assets/img/image/image-20.jpg",
+    "reviews": 90
+  },
+  {
+    "id": 21,
+    "nombre": "Producto Gato 21",
+    "marca": "MiauPet",
+    "precio": 284.82,
+    "imagen": "/assets/img/image/image-21.jpg",
+    "reviews": 39
+  },
+  {
+    "id": 22,
+    "nombre": "Producto Gato 22",
+    "marca": "PetLife",
+    "precio": 325.83,
+    "imagen": "/assets/img/image/image-22.jpg",
+    "reviews": 59
+  },
+  {
+    "id": 23,
+    "nombre": "Producto Gato 23",
+    "marca": "MiauPet",
+    "precio": 132.1,
+    "imagen": "/assets/img/image/image-23.jpg",
+    "reviews": 15
+  },
+  {
+    "id": 24,
+    "nombre": "Producto Gato 24",
+    "marca": "MiauPet",
+    "precio": 104.98,
+    "imagen": "/assets/img/image/image-24.jpg",
+    "reviews": 27
+  },
+  {
+    "id": 25,
+    "nombre": "Producto Gato 25",
+    "marca": "PetLife",
+    "precio": 322.63,
+    "imagen": "/assets/img/image/image-25.jpg",
+    "reviews": 3
+  },
+  {
+    "id": 26,
+    "nombre": "Producto Gato 26",
+    "marca": "CatHouse",
+    "precio": 188.7,
+    "imagen": "/assets/img/image/image-26.jpg",
+    "reviews": 34
   }
 ]

@@ -41,48 +41,66 @@ const agregarAlCarrito = ({ id, nombre, precio }) => {
   });
 };
 
-// 3. Renderizar productos desde JSON
+// 3. Detectar si estamos en catálogo
+const estaEnCatalogo = window.location.pathname.includes("catalogo.html");
+
+// 4. Renderizar productos desde JSON
 fetch("/assets/data/productos.json")
   .then((res) => res.json())
   .then((productos) => {
-    productos.forEach((producto) => {
-      const precioDolar = producto.precio.toFixed(2);
-      const div = document.createElement("div");
-      div.className = "card-producto";
-      div.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" />
-        <p class="marca">${producto.marca}</p>
-        <h3>${producto.nombre}</h3>
-        <div class="rating">
-          ⭐ ${producto.reviews} reviews
-        </div>
-        <p class="precio">$${precioDolar}</p>
-        <button
-          class="btn-temporada"
-          data-id="${producto.id}"
-          data-nombre="${producto.nombre}"
-          data-precio="${producto.precio}">
-          Comprar
-        </button>
-      `;
-      contenedor.appendChild(div);
-    });
+    const listaAMostrar = estaEnCatalogo
+      ? productos
+      : productos.filter((p) => p.id >= 1 && p.id <= 6);
 
-    // Activar botones
-    document.querySelectorAll(".btn-temporada").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.dataset.id;
-        const nombre = btn.dataset.nombre;
-        const precio = parseInt(btn.dataset.precio); // mantiene valor en centavos
-        agregarAlCarrito({ id, nombre, precio });
+    renderizarProductos(listaAMostrar);
+  });
+
+// fetch("/assets/data/productos.json")
+//   .then((res) => res.json())
+//   .then((productos) => {
+//     const listaAMostrar = estaEnCatalogo
+//       ? productos
+//       : [...productos].sort(() => Math.random() - 0.5).slice(0, 6);
+
+//     renderizarProductos(listaAMostrar);
+//   });
+
+// 5. Renderizar productos y vincular botones
+function renderizarProductos(lista) {
+  if (!contenedor) return;
+
+  lista.forEach((producto) => {
+    const precioDolar = producto.precio.toFixed(2);
+    const div = document.createElement("div");
+    div.className = "card-producto";
+    div.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}" />
+      <p class="marca">${producto.marca}</p>
+      <h3>${producto.nombre}</h3>
+      <div class="rating">
+        ⭐ ${producto.reviews} reviews
+      </div>
+      <p class="precio">$${precioDolar}</p>
+      <button class="btn-temporada">Comprar</button>
+    `;
+    contenedor.appendChild(div);
+
+    // Capturar el botón y agregarle el producto directamente (sin data-*)
+    const btn = div.querySelector(".btn-temporada");
+    btn.addEventListener("click", () => {
+      agregarAlCarrito({
+        id: producto.id,
+        nombre: producto.nombre,
+        precio: producto.precio,
       });
     });
   });
+}
 
-// 4. Inicializar contador al cargar
+// 6. Inicializar contador
 document.addEventListener("DOMContentLoaded", actualizarCarrito);
 
-// Mostrar el carrito al hacer clic en el ícono
+// 7. Mostrar carrito
 document.querySelector(".carrito-icono")?.addEventListener("click", (e) => {
   e.preventDefault();
   const panel = document.getElementById("carrito-detalle");
@@ -112,6 +130,7 @@ document.querySelector(".carrito-icono")?.addEventListener("click", (e) => {
   }
 });
 
+// 8. Renderizar carrito
 function renderizarCarrito() {
   const lista = document.getElementById("lista-carrito");
   const panel = document.getElementById("carrito-detalle");
@@ -121,7 +140,7 @@ function renderizarCarrito() {
   let total = 0;
 
   carrito.forEach((item) => {
-    const precio = Number(item.precio); // ya en dólares
+    const precio = Number(item.precio);
     const cantidad = Number(item.cantidad);
     const totalProducto = precio * cantidad;
     total += totalProducto;
@@ -137,7 +156,6 @@ function renderizarCarrito() {
     lista.appendChild(li);
   });
 
-  // Contenedor de resumen y botones
   const footer = document.createElement("div");
   footer.style.borderTop = "1px solid #ddd";
   footer.style.marginTop = "1.5rem";
@@ -149,7 +167,6 @@ function renderizarCarrito() {
   totalTexto.style.marginBottom = "1rem";
   totalTexto.textContent = `Total: $${total.toFixed(2)}`;
 
-  // Botón 1: Vaciar carrito
   const btnVaciar = document.createElement("button");
   btnVaciar.textContent = "🗑 Vaciar Carrito";
   btnVaciar.className = "btn-carrito outline";
@@ -161,7 +178,6 @@ function renderizarCarrito() {
     renderizarCarrito();
   };
 
-  // Botón 2: Ir al Checkout
   const btnCheckout = document.createElement("a");
   btnCheckout.textContent = "✅ Finalizar Compra";
   btnCheckout.href = "/pages/carrito.html";
