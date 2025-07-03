@@ -46,14 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   avanzarPaso("form-paso-2", 3);
   avanzarPaso("form-paso-3", 4);
 
-  // Opción de continuar como invitado
-  const btnInvitado = document.querySelector(".btn-invitado");
-  if (btnInvitado) {
-    btnInvitado.addEventListener("click", () => {
-      mostrarPaso(2);
-    });
-  }
-
   // Finalizar pedido con SweetAlert personalizado
   const formPaso4 = document.getElementById("form-paso-4");
   if (formPaso4) {
@@ -132,6 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error("Error al cargar provincias.json:", error);
     });
+
+  // Opción de continuar como invitado
+  const btnInvitado = document.querySelector(".btn-invitado");
+  if (btnInvitado) {
+    btnInvitado.addEventListener("click", () => {
+      mostrarPaso(2);
+    });
+  }
 });
 
 // RESUMEN CARRITO
