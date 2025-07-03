@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     SUPER20: 20.0, // $20.00
   };
 
+  let totalFinal = 0;
+
   const envio = 1.99; // en centavos
   let cuponAplicado = "";
 
@@ -69,6 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
         actualizarCantidad(id, esSuma ? 1 : -1);
       });
     });
+
+    totalFinal = subtotal + envio;
+    resumenTotal.textContent = `$${totalFinal.toFixed(2)}`;
+    document.getElementById(
+      "total-final-label"
+    ).textContent = `$${totalFinal.toFixed(2)}`;
   }
 
   function actualizarCantidad(id, delta) {
@@ -104,6 +112,18 @@ document.addEventListener("DOMContentLoaded", () => {
       descuentoLinea.textContent = `-$${descuento.toFixed(2)}`;
       resumenTotal.textContent = `$${totalFinal.toFixed(2)}`;
       cuponAplicado = codigo;
+      document.getElementById(
+        "total-final-label"
+      ).textContent = `$${totalFinal.toFixed(2)}`;
+
+      // ✅ GUARDAR EN LOCALSTORAGE PARA USAR EN OTRAS PÁGINAS COMO CHECKOUT
+      localStorage.setItem(
+        "resumen",
+        JSON.stringify({
+          descuento: descuento,
+          cupon: codigo,
+        })
+      );
 
       Swal.fire({
         icon: "success",
@@ -127,6 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cuponAplicado = "";
       descuentoLinea.textContent = "$0.00";
       resumenTotal.textContent = `$${(subtotal + envio).toFixed(2)}`;
+      document.getElementById("total-final-label").textContent = `$${(
+        subtotal + envio
+      ).toFixed(2)}`;
       mensajeError.textContent = "El código ingresado no es válido.";
       mensajeError.classList.remove("oculto");
     }

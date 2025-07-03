@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         }).then(() => {
           localStorage.removeItem("carrito");
+          localStorage.removeItem("resumen");
           window.location.href = "/index.html";
         });
       } else {
@@ -87,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const selCanton = document.getElementById("canton");
       if (!selProvincia || !selCanton) return;
 
-      // Función para limpiar y añadir placeholder
       const limpiarSelect = (select, placeholder) => {
         select.innerHTML = "";
         const opt = document.createElement("option");
@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
         select.appendChild(opt);
       };
 
-      // Cargar provincias
       data.provincias.forEach((prov) => {
         const opt = document.createElement("option");
         opt.value = prov.nombre;
@@ -104,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
         selProvincia.appendChild(opt);
       });
 
-      // Cargar cantones al cambiar de provincia
       selProvincia.addEventListener("change", () => {
         const provinciaSeleccionada = data.provincias.find(
           (p) => p.nombre === selProvincia.value
@@ -132,27 +130,32 @@ document.addEventListener("DOMContentLoaded", () => {
       mostrarPaso(2);
     });
   }
-});
 
-// RESUMEN CARRITO
-document.addEventListener("DOMContentLoaded", () => {
+  // ===============================
+  // RESUMEN DE CARRITO (DOM desde localStorage)
+  // ===============================
   const resumenCantidad = document.getElementById("carrito-resumen-cantidad");
   const resumenSubtotal = document.getElementById("resumen-subtotal");
   const resumenTotal = document.getElementById("resumen-total");
-  const descuentoLinea =
-    document.querySelectorAll(".resumen-linea")[2].children[1];
+  const resumenDescuento = document.getElementById("resumen-descuento");
+  const resumenEnvio = document.getElementById("resumen-envio");
 
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const resumen = JSON.parse(localStorage.getItem("resumen")) || {};
   const envio = 1.99;
-  let subtotal = carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+  const subtotal = carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+  const descuento = resumen.descuento || 0;
+  const total = subtotal + envio - descuento;
 
-  // Mostrar resumen en la columna derecha
-  if (resumenCantidad && resumenSubtotal && resumenTotal) {
+  if (resumenCantidad) {
     resumenCantidad.textContent = `Hay ${carrito.length} artículo${
       carrito.length !== 1 ? "s" : ""
     } en su carrito.`;
-    resumenSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-    descuentoLinea.textContent = "$0.00";
-    resumenTotal.textContent = `$${(subtotal + envio).toFixed(2)}`;
   }
+
+  if (resumenSubtotal) resumenSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+  if (resumenEnvio) resumenEnvio.textContent = `$${envio.toFixed(2)}`;
+  if (resumenDescuento)
+    resumenDescuento.textContent = `-$${descuento.toFixed(2)}`;
+  if (resumenTotal) resumenTotal.textContent = `$${total.toFixed(2)}`;
 });
