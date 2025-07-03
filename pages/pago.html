@@ -112,16 +112,25 @@
         <section id="paso-3" class="paso-contenido oculto">
           <div class="formulario-login">
             <h2>Método de Envío</h2>
-            <form id="form-paso-3">
-              <label>
-                <input type="radio" name="envio" value="estandar" checked />
-                Envío estándar - Gratis </label
-              ><br />
-              <label>
-                <input type="radio" name="envio" value="express" />
-                Envío express - $5.99
-              </label>
-
+            <form id="form-paso-3" class="formulario-envio">
+              <div class="opcion-envio">
+                <label>
+                  <input type="radio" name="envio" value="estandar" checked />
+                  <span class="opcion-label"
+                    ><strong>Envío estándar</strong> - Gratis (3 a 5 días
+                    hábiles)</span
+                  >
+                </label>
+              </div>
+              <div class="opcion-envio">
+                <label>
+                  <input type="radio" name="envio" value="express" />
+                  <span class="opcion-label"
+                    ><strong>Envío express</strong> - $5.99 (1 a 2 días
+                    hábiles)</span
+                  >
+                </label>
+              </div>
               <button type="submit" class="btn-principal">CONTINUAR</button>
             </form>
           </div>
@@ -129,17 +138,35 @@
 
         <!-- Paso 4 -->
         <section id="paso-4" class="paso-contenido oculto">
-          <div class="formulario-login">
+          <div class="formulario-login formulario-pago">
             <h2>Pago</h2>
             <form id="form-paso-4">
-              <label for="tarjeta">Número de tarjeta</label>
-              <input type="text" id="tarjeta" required />
+              <div class="campo-formulario">
+                <label for="tarjeta">Número de tarjeta</label>
+                <input
+                  type="text"
+                  id="tarjeta"
+                  placeholder="XXXX XXXX XXXX XXXX"
+                  required
+                />
+              </div>
 
-              <label for="vencimiento">Fecha de vencimiento</label>
-              <input type="text" id="vencimiento" required />
+              <div class="campo-formulario doble">
+                <div>
+                  <label for="vencimiento">Fecha de vencimiento</label>
+                  <input
+                    type="text"
+                    id="vencimiento"
+                    placeholder="MM/AA"
+                    required
+                  />
+                </div>
 
-              <label for="cvv">CVV</label>
-              <input type="text" id="cvv" required />
+                <div>
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" placeholder="123" required />
+                </div>
+              </div>
 
               <button type="submit" class="btn-principal">
                 FINALIZAR PEDIDO
@@ -147,48 +174,6 @@
             </form>
           </div>
         </section>
-
-        <!-- Columna derecha: Resumen -->
-        <aside class="carrito-resumen">
-          <h3 class="titulo-resumen" id="carrito-resumen-cantidad">
-            Hay 0 artículos en su carrito.
-          </h3>
-
-          <div class="cupon-wrapper" id="cupon-wrapper">
-            <label for="cupon"
-              ><strong>¿Tiene un código promocional?</strong></label
-            >
-            <div class="cupon-input-group">
-              <label
-                id="cupon-aplicado-label"
-                class="cupon-aplicado oculto"
-              ></label>
-            </div>
-            <p id="mensaje-error-cupon" class="mensaje-error-cupon oculto">
-              Por favor ingrese un código promocional válido.
-            </p>
-          </div>
-
-          <div class="resumen-linea">
-            <span>Subtotal:</span>
-            <span id="resumen-subtotal">$0.00</span>
-          </div>
-          <div class="resumen-linea">
-            <span>Gastos de envío:</span>
-            <span>$0.00</span>
-          </div>
-          <div class="resumen-linea">
-            <span>Descuento:</span>
-            <span>$0.00</span>
-          </div>
-
-          <hr />
-
-          <div class="resumen-total">
-            <span>Total:</span>
-            <span id="resumen-total">$0.00</span>
-          </div>
-        </aside>
       </section>
     </main>
 

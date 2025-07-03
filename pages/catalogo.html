@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalogo</title>
+
+    <!-- Font de google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome para íconos -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- AOS CSS para animaciones al hacer scroll (scroll reveal con clases) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Hojas de estilo personalizadas -->
+    <link rel="stylesheet" href="/assets/css/normalize.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <!-- ======================================== -->
+    <!--               NAV                        -->
+    <!-- ======================================== -->
+
+    <header class="header">
+      <div class="header-flex contenedor">
+        <!-- Logo a la izquierda -->
+        <a href="../index.html" class="logo-header">
+          <img src="../assets/img/image/gatox-logo.png" alt="Logo Gatox" />
+        </a>
+
+        <!-- Menú principal al centro -->
+        <nav class="nav-principal">
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../pages/catalogo.html">Catálogo</a></li>
+            <li><a href="../pages/inspiracion.html">Inspiración</a></li>
+            <li><a href="../pages/contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- Sección derecha con íconos -->
+        <div class="nav-acciones">
+          <a href="#" aria-label="Buscar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+          <a href="#" aria-label="Perfil">
+            <i class="fa-solid fa-user"></i>
+          </a>
+          <a
+            href="#"
+            role="button"
+            tabindex="0"
+            aria-label="Carrito"
+            class="carrito-icono"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cantidad-carrito" class="carrito-cantidad">0</span>
+          </a>
+        </div>
+      </div>
+      <!-- Panel lateral del carrito -->
+      <div id="carrito-detalle" class="carrito-detalle">
+        <ul id="lista-carrito"></ul>
+      </div>
+    </header>
+
+    <!-- CATALOGO -->
+    <section id="productos" class="productos-temporada contenedor">
+      <h2 class="titulo-seccion text-center">Catálogo de Productos</h2>
+      <div class="grid-temporada"></div>
+    </section>
+
+    <!-- ======================================== -->
+    <!--               FOOTER                     -->
+    <!-- ======================================== -->
+    <footer class="footer">
+      <div class="footer-contenido contenedor">
+        <div class="footer-logo">
+          <a href="./index.html">
+            <img src="./assets/img/image/gatox-logo.svg" alt="Logo Gatox" />
+          </a>
+        </div>
+
+        <div class="footer-enlaces">
+          <h3>Enlaces</h3>
+          <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./catalogo.html">Catálogo</a></li>
+            <li><a href="./inspiracion.html">Inspiración</a></li>
+            <li><a href="./contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contacto">
+          <h3>Contacto</h3>
+          <p><i class="fa-solid fa-envelope"></i> contacto@gatox.com</p>
+          <p><i class="fa-solid fa-phone"></i> +593 99 999 9999</p>
+          <p><i class="fa-solid fa-location-dot"></i> Quito, Ecuador</p>
+        </div>
+
+        <div class="footer-social">
+          <h3>Seguinos</h3>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        <p>&copy; 2025 Gatox. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- SweetAlert2 primero -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts internos -->
+    <script src="/assets/js/renderProductos.js"></script>
+    <script src="/assets/js/carrito.js"></script>
+
+    <!-- AOS al final -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

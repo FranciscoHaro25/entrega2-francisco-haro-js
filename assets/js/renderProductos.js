@@ -86,6 +86,26 @@ document.addEventListener("DOMContentLoaded", actualizarCarrito);
 document.querySelector(".carrito-icono")?.addEventListener("click", (e) => {
   e.preventDefault();
   const panel = document.getElementById("carrito-detalle");
+  if (!carrito.length) {
+    Swal.fire({
+      icon: "info",
+      title: "Tu carrito está vacío 🛒",
+      text: "Agrega productos para poder visualizar tu pedido.",
+      background: "#fff7f0",
+      color: "#333",
+      iconColor: "#EC6A37",
+      confirmButtonText: "Ir al Catálogo",
+      customClass: {
+        popup: "swal-popup-gatox",
+        title: "swal-title-gatox",
+        htmlContainer: "swal-html-gatox",
+        confirmButton: "swal-btn-ok-gatox",
+      },
+    }).then(() => {
+      window.location.href = "/pages/catalogo.html";
+    });
+    return;
+  }
   if (panel) {
     panel.classList.toggle("visible");
     renderizarCarrito();
