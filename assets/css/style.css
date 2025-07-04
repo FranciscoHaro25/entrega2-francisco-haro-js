@@ -137,6 +137,12 @@ img {
   margin-left: 1rem;
   font-size: 1.9rem;
   transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-acciones a i {
+  text-decoration: none;
+  display: inline-block;
 }
 
 .nav-acciones a:hover {
@@ -455,19 +461,13 @@ img {
   background-color: #0f3c65;
 }
 
-.mensaje-error-cupon {
-  color: #e53935;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-}
-
 .oculto {
   display: none;
 }
 
 .mensaje-error-cupon {
   color: #e53935;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
 }
 
@@ -924,6 +924,12 @@ img {
   padding: 2rem;
   margin-bottom: 2rem;
 } */
+
+.titulo-seccion {
+  /* font-size: 2.4rem; */
+  margin: 2rem;
+  padding-top: 4rem;
+}
 
 .producto-carrito {
   border-bottom: 1px solid #eee;
@@ -1619,4 +1625,31 @@ form select {
 
 .campo-formulario.doble > div {
   flex: 1;
+}
+
+.buscador-productos {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.busqueda-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  padding: 0.8rem 1.6rem;
+}
+
+.busqueda-label i {
+  color: var(--color-primario);
+  font-size: 1.6rem;
+}
+
+#busqueda {
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  width: 250px;
 }

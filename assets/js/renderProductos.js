@@ -1,5 +1,7 @@
 // 1. Variables globales
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let todosLosProductos = [];
+
 const contenedor = document.querySelector(".grid-temporada");
 const carritoCantidad = document.querySelector(".carrito-cantidad");
 
@@ -48,26 +50,32 @@ const estaEnCatalogo = window.location.pathname.includes("catalogo.html");
 fetch("/assets/data/productos.json")
   .then((res) => res.json())
   .then((productos) => {
+    todosLosProductos = productos;
     const listaAMostrar = estaEnCatalogo
       ? productos
       : productos.filter((p) => p.id >= 1 && p.id <= 6);
-
     renderizarProductos(listaAMostrar);
   });
 
-// fetch("/assets/data/productos.json")
-//   .then((res) => res.json())
-//   .then((productos) => {
-//     const listaAMostrar = estaEnCatalogo
-//       ? productos
-//       : [...productos].sort(() => Math.random() - 0.5).slice(0, 6);
+// 5. Filtrado por búsqueda solo si hay input
+document.getElementById("busqueda")?.addEventListener("input", (e) => {
+  const texto = e.target.value.toLowerCase().trim();
 
-//     renderizarProductos(listaAMostrar);
-//   });
+  const filtrados = todosLosProductos.filter((prod) => {
+    return (
+      prod.nombre.toLowerCase().includes(texto) ||
+      prod.marca.toLowerCase().includes(texto)
+    );
+  });
 
-// 5. Renderizar productos y vincular botones
+  contenedor.innerHTML = "";
+  renderizarProductos(filtrados);
+});
+
+// 6. Renderizar productos y vincular botones
 function renderizarProductos(lista) {
   if (!contenedor) return;
+  contenedor.innerHTML = "";
 
   lista.forEach((producto) => {
     const precioDolar = producto.precio.toFixed(2);
@@ -85,7 +93,6 @@ function renderizarProductos(lista) {
     `;
     contenedor.appendChild(div);
 
-    // Capturar el botón y agregarle el producto directamente (sin data-*)
     const btn = div.querySelector(".btn-temporada");
     btn.addEventListener("click", () => {
       agregarAlCarrito({
@@ -97,10 +104,10 @@ function renderizarProductos(lista) {
   });
 }
 
-// 6. Inicializar contador
+// 7. Inicializar contador
 document.addEventListener("DOMContentLoaded", actualizarCarrito);
 
-// 7. Mostrar carrito
+// 8. Mostrar carrito
 document.querySelector(".carrito-icono")?.addEventListener("click", (e) => {
   e.preventDefault();
   const panel = document.getElementById("carrito-detalle");
@@ -130,7 +137,7 @@ document.querySelector(".carrito-icono")?.addEventListener("click", (e) => {
   }
 });
 
-// 8. Renderizar carrito
+// 9. Renderizar carrito
 function renderizarCarrito() {
   const lista = document.getElementById("lista-carrito");
   const panel = document.getElementById("carrito-detalle");
