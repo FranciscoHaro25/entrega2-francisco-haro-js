@@ -30,13 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalProducto = precio * cantidad;
       subtotal += totalProducto;
 
+      // Detectar si estamos en una página dentro de /pages/
+      const estaEnSubpagina = window.location.pathname.includes("/pages/");
+      const rutaImagen = estaEnSubpagina
+        ? `../assets/img/image/image-${item.id}.jpg`
+        : `./assets/img/image/image-${item.id}.jpg`;
+
       const div = document.createElement("div");
       div.className = "producto-carrito";
       div.innerHTML = `
         <div class="producto-detalle">
-          <img src="/assets/img/image/image-${item.id}.jpg" alt="${
-        item.nombre
-      }" />
+          <img src="${rutaImagen}" alt="${item.nombre}" />
           <div class="producto-info">
             <p class="nombre">${item.nombre}</p>
             <p class="precio">$${precio.toFixed(2)} x ${cantidad}</p>

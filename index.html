@@ -21,8 +21,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Hojas de estilo personalizadas -->
-    <link rel="stylesheet" href="/assets/css/normalize.css" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body>
@@ -70,7 +70,25 @@
 
       <!-- Panel lateral del carrito -->
       <div id="carrito-detalle" class="carrito-detalle">
-        <ul id="lista-carrito"></ul>
+        <div class="carrito-contenido">
+          <h2>Su compra</h2>
+          <ul id="lista-carrito"></ul>
+          <div class="carrito-footer">
+            <p class="carrito-subtotal">
+              Subtotal <span id="total-carrito">$0</span>
+            </p>
+            <a
+              href="./pages/checkout.html"
+              class="btn-categoria green full-width"
+              >Tramitar Pedido</a
+            >
+            <a
+              href="./pages/carrito.html"
+              class="btn-categoria outline full-width"
+              >Ver Carrito Completo</a
+            >
+          </div>
+        </div>
       </div>
     </header>
 
@@ -79,7 +97,7 @@
     <!-- ======================================== -->
     <section class="hero-carrusel" id="hero">
       <div class="hero-contenido slide activo">
-        <img src="/assets/img/image/imagen-hero-1.jpg" alt="Slide 1" />
+        <img src="./assets/img/image/imagen-hero-1.jpg" alt="Slide 1" />
         <div class="contenido-hero contenedor">
           <h1>Bienvenida a Gatox</h1>
           <p>Accesorios para gatos con estilo</p>
@@ -88,7 +106,7 @@
       </div>
 
       <div class="slide">
-        <img src="/assets/img/image/imagen-hero-2.jpg" alt="Slide 2" />
+        <img src="./assets/img/image/imagen-hero-2.jpg" alt="Slide 2" />
         <div class="contenido-hero contenedor">
           <h1>Promo destacada</h1>
           <p>¡20% OFF en juguetes seleccionados!</p>
@@ -97,7 +115,7 @@
       </div>
 
       <div class="slide">
-        <img src="/assets/img/image/imagen-hero-3.jpg" alt="Slide 3" />
+        <img src="./assets/img/image/imagen-hero-3.jpg" alt="Slide 3" />
         <div class="contenido-hero contenedor">
           <h1>Gatopuntos</h1>
           <p>Acumulá Gatopuntos en cada compra</p>
@@ -106,7 +124,7 @@
       </div>
 
       <div class="slide">
-        <img src="/assets/img/image/imagen-hero-4.jpg" alt="Slide 3" />
+        <img src="./assets/img/image/imagen-hero-4.jpg" alt="Slide 3" />
         <div class="contenido-hero contenedor">
           <h1>Testimonio breve o beneficio</h1>
           <p>Acumulá Gatopuntos en cada compra</p>
@@ -131,7 +149,7 @@
         <div class="grid-vendidos">
           <div class="card-vendido">
             <img
-              src="/assets/img/image/oferta-1.jpg"
+              src="./assets/img/image/oferta-1.jpg"
               alt="Producto más vendido"
             />
             <h3>Pack Juguetes Sorpresa</h3>
@@ -144,7 +162,7 @@
 
           <div class="card-vendido">
             <img
-              src="/assets/img/image/oferta-2.jpg"
+              src="./assets/img/image/oferta-2.jpg"
               alt="Producto más vendido"
             />
             <h3>Kit Deluxe de Juguetes</h3>
@@ -157,7 +175,7 @@
 
           <div class="card-vendido">
             <img
-              src="/assets/img/image/oferta-3.jpg"
+              src="./assets/img/image/oferta-3.jpg"
               alt="Producto más vendido"
             />
             <h3>Rascador Minimalista</h3>
@@ -257,43 +275,19 @@
       <div class="grid-beneficios">
         <a href="#" class="card-beneficio">
           <img
-            src="/assets/img/image/beneficio-1.jpg"
+            src="./assets/img/image/beneficio-1.jpg"
             alt="Beneficio Gaticliente"
           />
         </a>
 
         <a href="#" class="card-beneficio">
           <img
-            src="/assets/img/image/beneficio-2.jpg"
+            src="./assets/img/image/beneficio-2.jpg"
             alt="Beneficio Gatopuntos"
           />
         </a>
       </div>
     </section>
-
-    <!-- ======================================== -->
-    <!--           CARRITO (DETALLE)              -->
-    <!-- ======================================== -->
-
-    <div class="carrito-detalle" id="carrito-detalle">
-      <div class="carrito-contenido">
-        <h2>Su compra</h2>
-        <ul id="lista-carrito"></ul>
-        <div class="carrito-footer">
-          <p class="carrito-subtotal">
-            Subtotal <span id="total-carrito">$0</span>
-          </p>
-          <a href="./pages/checkout.html" class="btn-categoria green full-width"
-            >Tramitar Pedido</a
-          >
-          <a
-            href="./pages/carrito.html"
-            class="btn-categoria full-width outline"
-            >Ver mi carrito</a
-          >
-        </div>
-      </div>
-    </div>
 
     <!-- ======================================== -->
     <!--               FOOTER                     -->
@@ -342,8 +336,8 @@
     <!-- Scripts internos -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/slider.js"></script>
-    <script src="/assets/js/renderProductos.js"></script>
-    <script src="../assets/js/carrito.js"></script>
+    <script src="./assets/js/renderProductos.js"></script>
+    <script src="./assets/js/carrito.js"></script>
 
     <!-- AOS al final -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

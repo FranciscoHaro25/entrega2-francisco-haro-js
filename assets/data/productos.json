@@ -4,7 +4,7 @@
     "nombre": "BRNX Cama Palta Lover",
     "marca": "BRNX",
     "precio": 127.9,
-    "imagen": "/assets/img/image/image-1.jpg",
+    "imagen": "./assets/img/image/image-1.jpg",
     "reviews": 5
   },
   {
@@ -12,7 +12,7 @@
     "nombre": "Cama Antiestrés para Gato",
     "marca": "Marbenpets",
     "precio": 199.9,
-    "imagen": "/assets/img/image/image-2.jpg",
+    "imagen": "./assets/img/image/image-2.jpg",
     "reviews": 2
   },
   {
@@ -20,7 +20,7 @@
     "nombre": "Gigwi Cojín Cama Gato",
     "marca": "Gigwi",
     "precio": 229.9,
-    "imagen": "/assets/img/image/image-3.jpg",
+    "imagen": "./assets/img/image/image-3.jpg",
     "reviews": 5
   },
   {
@@ -28,7 +28,7 @@
     "nombre": "Refugio Rascador Casa Azul",
     "marca": "Marbenpets",
     "precio": 129.9,
-    "imagen": "/assets/img/image/image-4.jpg",
+    "imagen": "./assets/img/image/image-4.jpg",
     "reviews": 0
   },
   {
@@ -36,7 +36,7 @@
     "nombre": "Orijen Original Cat",
     "marca": "Orijen",
     "precio": 309.9,
-    "imagen": "/assets/img/image/image-5.jpg",
+    "imagen": "./assets/img/image/image-5.jpg",
     "reviews": 65
   },
   {
@@ -44,7 +44,7 @@
     "nombre": "Leonardo Fresh Meat Ternera",
     "marca": "Leonardo",
     "precio": 277.9,
-    "imagen": "/assets/img/image/image-6.jpg",
+    "imagen": "./assets/img/image/image-6.jpg",
     "reviews": 6
   },
   {
@@ -52,7 +52,7 @@
     "nombre": "Casita Lunar Premium",
     "marca": "CatHouse",
     "precio": 107.0,
-    "imagen": "/assets/img/image/image-7.jpg",
+    "imagen": "./assets/img/image/image-7.jpg",
     "reviews": 73
   },
   {
@@ -60,7 +60,7 @@
     "nombre": "Gatox Torre de Juegos 3 en 1",
     "marca": "Gatox",
     "precio": 260.36,
-    "imagen": "/assets/img/image/image-8.jpg",
+    "imagen": "./assets/img/image/image-8.jpg",
     "reviews": 42
   },
   {
@@ -68,7 +68,7 @@
     "nombre": "Cueva Termo Plush Deluxe",
     "marca": "CatHouse",
     "precio": 239.41,
-    "imagen": "/assets/img/image/image-9.jpg",
+    "imagen": "./assets/img/image/image-9.jpg",
     "reviews": 98
   },
   {
@@ -76,7 +76,7 @@
     "nombre": "Cama Nube Suave XL",
     "marca": "MiauPet",
     "precio": 319.15,
-    "imagen": "/assets/img/image/image-10.jpg",
+    "imagen": "./assets/img/image/image-10.jpg",
     "reviews": 9
   },
   {
@@ -84,7 +84,7 @@
     "nombre": "Refugio Escondite de Lujo",
     "marca": "PetLife",
     "precio": 357.56,
-    "imagen": "/assets/img/image/image-11.jpg",
+    "imagen": "./assets/img/image/image-11.jpg",
     "reviews": 47
   },
   {
@@ -92,7 +92,7 @@
     "nombre": "Gatox Cueva Zen EcoFriendly",
     "marca": "Gatox",
     "precio": 282.01,
-    "imagen": "/assets/img/image/image-12.jpg",
+    "imagen": "./assets/img/image/image-12.jpg",
     "reviews": 76
   },
   {
@@ -100,7 +100,7 @@
     "nombre": "MiauPet Alfombra Interactiva",
     "marca": "MiauPet",
     "precio": 255.72,
-    "imagen": "/assets/img/image/image-13.jpg",
+    "imagen": "./assets/img/image/image-13.jpg",
     "reviews": 52
   },
   {
@@ -108,7 +108,7 @@
     "nombre": "Gatox Cama Igloo Nordic",
     "marca": "Gatox",
     "precio": 170.9,
-    "imagen": "/assets/img/image/image-14.jpg",
+    "imagen": "./assets/img/image/image-14.jpg",
     "reviews": 79
   },
   {
@@ -116,7 +116,7 @@
     "nombre": "Sofá Plegable Antiestrés",
     "marca": "PetLife",
     "precio": 206.66,
-    "imagen": "/assets/img/image/image-15.jpg",
+    "imagen": "./assets/img/image/image-15.jpg",
     "reviews": 3
   },
   {
@@ -124,7 +124,7 @@
     "nombre": "Cama Envolvente para Gatos",
     "marca": "PetLife",
     "precio": 161.5,
-    "imagen": "/assets/img/image/image-16.jpg",
+    "imagen": "./assets/img/image/image-16.jpg",
     "reviews": 15
   },
   {
@@ -132,7 +132,7 @@
     "nombre": "Tunel Mágico Multiusos",
     "marca": "MiauPet",
     "precio": 272.28,
-    "imagen": "/assets/img/image/image-17.jpg",
+    "imagen": "./assets/img/image/image-17.jpg",
     "reviews": 18
   },
   {
@@ -140,7 +140,7 @@
     "nombre": "PetLife Refugio Relax",
     "marca": "PetLife",
     "precio": 166.6,
-    "imagen": "/assets/img/image/image-18.jpg",
+    "imagen": "./assets/img/image/image-18.jpg",
     "reviews": 15
   },
   {
@@ -148,7 +148,7 @@
     "nombre": "MiauPet Cueva AutoCalefactable",
     "marca": "MiauPet",
     "precio": 122.01,
-    "imagen": "/assets/img/image/image-19.jpg",
+    "imagen": "./assets/img/image/image-19.jpg",
     "reviews": 94
   },
   {
@@ -156,7 +156,7 @@
     "nombre": "Estación de Descanso GatoPRO",
     "marca": "PetLife",
     "precio": 288.73,
-    "imagen": "/assets/img/image/image-20.jpg",
+    "imagen": "./assets/img/image/image-20.jpg",
     "reviews": 90
   },
   {
@@ -164,7 +164,7 @@
     "nombre": "Hamaca Deluxe Pared",
     "marca": "MiauPet",
     "precio": 284.82,
-    "imagen": "/assets/img/image/image-21.jpg",
+    "imagen": "./assets/img/image/image-21.jpg",
     "reviews": 39
   },
   {
@@ -172,7 +172,7 @@
     "nombre": "PetLife Domo Zen",
     "marca": "PetLife",
     "precio": 325.83,
-    "imagen": "/assets/img/image/image-22.jpg",
+    "imagen": "./assets/img/image/image-22.jpg",
     "reviews": 59
   },
   {
@@ -180,7 +180,7 @@
     "nombre": "MiauPet Alfombra Caliente Plus",
     "marca": "MiauPet",
     "precio": 132.1,
-    "imagen": "/assets/img/image/image-23.jpg",
+    "imagen": "./assets/img/image/image-23.jpg",
     "reviews": 15
   },
   {
@@ -188,7 +188,7 @@
     "nombre": "Refugio Acolchado Mini",
     "marca": "MiauPet",
     "precio": 104.98,
-    "imagen": "/assets/img/image/image-24.jpg",
+    "imagen": "./assets/img/image/image-24.jpg",
     "reviews": 27
   },
   {
@@ -196,7 +196,7 @@
     "nombre": "Cama Enrollada Memory Foam",
     "marca": "PetLife",
     "precio": 322.63,
-    "imagen": "/assets/img/image/image-25.jpg",
+    "imagen": "./assets/img/image/image-25.jpg",
     "reviews": 3
   },
   {
@@ -204,7 +204,7 @@
     "nombre": "CatHouse Rascador Cueva 2 en 1",
     "marca": "CatHouse",
     "precio": 188.7,
-    "imagen": "/assets/img/image/image-26.jpg",
+    "imagen": "./assets/img/image/image-26.jpg",
     "reviews": 34
   }
 ]

@@ -397,7 +397,7 @@ img {
 }
 
 .oferta-img {
-  background-image: url(/assets/img/image/descuento.svg);
+  background-image: url(../img/image/descuento.svg);
   background-size: auto;
   background-repeat: no-repeat;
   background-position: center center;
