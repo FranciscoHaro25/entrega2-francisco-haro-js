@@ -5,30 +5,6 @@ let todosLosProductos = [];
 const contenedor = document.querySelector(".grid-temporada");
 const carritoCantidad = document.querySelector(".carrito-cantidad");
 
-// Debug: Verificar que los elementos se encuentren
-console.log("🔍 DEBUGGING RENDERPRODUCTOS.JS");
-console.log("📍 URL actual:", window.location.pathname);
-console.log(
-  "🎯 Contenedor .grid-temporada encontrado:",
-  contenedor ? "SÍ" : "NO"
-);
-console.log(
-  "🛒 Elemento .carrito-cantidad encontrado:",
-  carritoCantidad ? "SÍ" : "NO"
-);
-
-if (!contenedor) {
-  console.error("❌ PROBLEMA: No se encontró el contenedor .grid-temporada");
-  console.log("🔍 Verificando si existe en el DOM...");
-  setTimeout(() => {
-    const contenedorTarde = document.querySelector(".grid-temporada");
-    console.log(
-      "⏰ Contenedor después de timeout:",
-      contenedorTarde ? "ENCONTRADO" : "NO ENCONTRADO"
-    );
-  }, 1000);
-}
-
 // 2. Funciones de carrito
 const guardarCarrito = () =>
   localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -83,43 +59,25 @@ const rutaBase = estaEnCatalogo
 
 // 5. Función para cargar y renderizar productos
 function cargarProductos() {
-  console.log("🚀 Iniciando carga de productos...");
-  console.log(`📁 Ruta JSON: ${rutaBase}`);
-
-  // Verificar contenedor nuevamente
+  // Verificar contenedor
   const contenedorActual = document.querySelector(".grid-temporada");
-  console.log(
-    "🎯 Contenedor al momento de cargar:",
-    contenedorActual ? "ENCONTRADO" : "NO ENCONTRADO"
-  );
-
   if (!contenedorActual) {
-    console.error("❌ No se puede cargar productos sin contenedor");
+    console.error("❌ No se encontró el contenedor .grid-temporada");
     return;
   }
 
   fetch(rutaBase)
     .then((res) => {
-      console.log("📡 Respuesta del fetch:", res.status, res.statusText);
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}: ${res.statusText}`);
       }
       return res.json();
     })
     .then((productos) => {
-      console.log(`🎯 Productos cargados: ${productos.length}`);
-      console.log(`📍 Estamos en: ${estaEnCatalogo ? "Catálogo" : "Index"}`);
-
       todosLosProductos = productos;
       const listaAMostrar = estaEnCatalogo
         ? productos
         : productos.filter((p) => p.id >= 1 && p.id <= 6);
-
-      console.log(`🛍️ Productos a mostrar: ${listaAMostrar.length}`);
-      console.log(
-        "📦 Primeros productos:",
-        listaAMostrar.slice(0, 2).map((p) => p.nombre)
-      );
 
       renderizarProductos(listaAMostrar);
     })
@@ -150,32 +108,32 @@ document.getElementById("busqueda")?.addEventListener("input", (e) => {
     );
   });
 
-  contenedor.innerHTML = "";
-  renderizarProductos(filtrados);
+  // Buscar contenedor actual para búsqueda
+  const contenedorBusqueda = document.querySelector(".grid-temporada");
+  if (contenedorBusqueda) {
+    contenedorBusqueda.innerHTML = "";
+    renderizarProductos(filtrados);
+  }
 });
 
 // 6. Renderizar productos y vincular botones
 function renderizarProductos(lista) {
-  console.log("🎨 Iniciando renderizarProductos...");
-  console.log("📦 Lista de productos recibida:", lista.length);
-  console.log("🎯 Contenedor encontrado:", contenedor ? "SÍ" : "NO");
-
-  if (!contenedor) {
+  // Buscar contenedor en tiempo real
+  const contenedorActual = document.querySelector(".grid-temporada");
+  if (!contenedorActual) {
     console.error("❌ No se encontró el contenedor .grid-temporada");
     return;
   }
 
-  contenedor.innerHTML = "";
+  contenedorActual.innerHTML = "";
 
   if (lista.length === 0) {
-    console.warn("⚠️ No hay productos para mostrar");
-    contenedor.innerHTML = "<p>No se encontraron productos</p>";
+    contenedorActual.innerHTML =
+      "<p style='text-align: center; color: #666;'>No se encontraron productos</p>";
     return;
   }
 
-  lista.forEach((producto, index) => {
-    console.log(`🛍️ Renderizando producto ${index + 1}:`, producto.nombre);
-
+  lista.forEach((producto) => {
     const precioDolar = producto.precio.toFixed(2);
     // Usar la ruta de imagen que viene del JSON, pero ajustar según el contexto
     let rutaImagen = producto.imagen;
@@ -183,12 +141,10 @@ function renderizarProductos(lista) {
       rutaImagen = rutaImagen.replace("./assets/", "../assets/");
     }
 
-    console.log(`🖼️ Ruta de imagen para ${producto.nombre}:`, rutaImagen);
-
     const div = document.createElement("div");
     div.className = "card-producto";
     div.innerHTML = `
-      <img src="${rutaImagen}" alt="${producto.nombre}" onerror="console.error('Error cargando imagen: ${rutaImagen}')" />
+      <img src="${rutaImagen}" alt="${producto.nombre}" />
       <p class="marca">${producto.marca}</p>
       <h3>${producto.nombre}</h3>
       <div class="rating">
@@ -197,7 +153,7 @@ function renderizarProductos(lista) {
       <p class="precio">$${precioDolar}</p>
       <button class="btn-temporada">Comprar</button>
     `;
-    contenedor.appendChild(div);
+    contenedorActual.appendChild(div);
 
     const btn = div.querySelector(".btn-temporada");
     btn.addEventListener("click", () => {
@@ -208,10 +164,6 @@ function renderizarProductos(lista) {
       });
     });
   });
-
-  console.log(
-    `✅ Renderización completada. ${lista.length} productos añadidos al DOM`
-  );
 }
 
 // 7. Inicializar contador
