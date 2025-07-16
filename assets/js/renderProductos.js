@@ -75,6 +75,8 @@ function cargarProductos() {
     })
     .then((productos) => {
       todosLosProductos = productos;
+      // En index: mostrar solo los primeros 6 (más vendidos)
+      // En catálogo: mostrar todos
       const listaAMostrar = estaEnCatalogo
         ? productos
         : productos.filter((p) => p.id >= 1 && p.id <= 6);
@@ -97,7 +99,7 @@ if (document.readyState === "loading") {
   cargarProductos();
 }
 
-// 5. Filtrado por búsqueda solo si hay input
+// 7. Filtrado por búsqueda solo si hay input
 document.getElementById("busqueda")?.addEventListener("input", (e) => {
   const texto = e.target.value.toLowerCase().trim();
 
@@ -116,7 +118,7 @@ document.getElementById("busqueda")?.addEventListener("input", (e) => {
   }
 });
 
-// 6. Renderizar productos y vincular botones
+// 8. Renderizar productos y vincular botones
 function renderizarProductos(lista) {
   // Buscar contenedor en tiempo real
   const contenedorActual = document.querySelector(".grid-temporada");
@@ -166,13 +168,10 @@ function renderizarProductos(lista) {
   });
 }
 
-// 7. Inicializar contador
+// 9. Inicializar contador
 document.addEventListener("DOMContentLoaded", actualizarCarrito);
 
-// 8. Mostrar carrito - usar función del main.js
-// El evento del carrito se maneja desde main.js
-
-// 7. Inicializar contador al cargar la página
+// 10. Inicializar contador al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   if (typeof actualizarContadorCarrito === "function") {
     actualizarContadorCarrito();

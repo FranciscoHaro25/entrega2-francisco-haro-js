@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Productos</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .grid-temporada {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .card-producto {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      .card-producto img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .btn-temporada {
+        background: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+      .success {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Test de Carga de Productos</h1>
+
+    <div id="debug-info">
+      <h3>Información de Debug:</h3>
+      <p>URL actual: <span id="url-actual"></span></p>
+      <p>¿Está en catálogo?: <span id="esta-en-catalogo"></span></p>
+      <p>Ruta JSON: <span id="ruta-json"></span></p>
+      <p>Estado del contenedor: <span id="estado-contenedor"></span></p>
+      <p>Total productos cargados: <span id="total-productos"></span></p>
+    </div>
+
+    <h2>Los más vendidos (IDs 1-6)</h2>
+    <div class="grid-temporada" id="productos-vendidos"></div>
+
+    <h2>Todos los productos</h2>
+    <div class="grid-temporada" id="todos-productos"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      // Debug inicial
+      document.getElementById("url-actual").textContent =
+        window.location.pathname;
+      document.getElementById("esta-en-catalogo").textContent =
+        window.location.pathname.includes("catalogo.html");
+
+      const estaEnCatalogo = window.location.pathname.includes("catalogo.html");
+      const rutaBase = estaEnCatalogo
+        ? "../assets/data/productos.json"
+        : "./assets/data/productos.json";
+
+      document.getElementById("ruta-json").textContent = rutaBase;
+
+      // Verificar contenedor
+      const contenedor1 = document.querySelector("#productos-vendidos");
+      const contenedor2 = document.querySelector("#todos-productos");
+      document.getElementById("estado-contenedor").textContent =
+        contenedor1 && contenedor2 ? "OK" : "ERROR";
+
+      // Cargar productos
+      console.log("🔄 Iniciando carga de productos...");
+      console.log("📍 Ruta JSON:", rutaBase);
+
+      fetch(rutaBase)
+        .then((res) => {
+          console.log("📡 Respuesta del servidor:", res.status, res.statusText);
+          if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+          }
+          return res.json();
+        })
+        .then((productos) => {
+          console.log("✅ Productos cargados:", productos.length);
+          document.getElementById("total-productos").textContent =
+            productos.length;
+
+          // Mostrar primeros 6 (más vendidos)
+          const masVendidos = productos.filter((p) => p.id >= 1 && p.id <= 6);
+          renderizarProductos(masVendidos, contenedor1);
+
+          // Mostrar todos
+          renderizarProductos(productos, contenedor2);
+        })
+        .catch((error) => {
+          console.error("❌ Error:", error);
+          document.getElementById("total-productos").textContent =
+            "ERROR: " + error.message;
+          contenedor1.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+          contenedor2.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+        });
+
+      function renderizarProductos(lista, contenedor) {
+        if (!contenedor) {
+          console.error("❌ Contenedor no encontrado");
+          return;
+        }
+
+        contenedor.innerHTML = "";
+
+        if (lista.length === 0) {
+          contenedor.innerHTML = "<p>No hay productos para mostrar</p>";
+          return;
+        }
+
+        lista.forEach((producto) => {
+          const precioDolar = producto.precio.toFixed(2);
+          let rutaImagen = producto.imagen;
+
+          const div = document.createElement("div");
+          div.className = "card-producto";
+          div.innerHTML = `
+                    <img src="${rutaImagen}" alt="${producto.nombre}" />
+                    <p class="marca">${producto.marca}</p>
+                    <h3>${producto.nombre}</h3>
+                    <div class="rating">⭐ ${producto.reviews} reviews</div>
+                    <p class="precio">$${precioDolar}</p>
+                    <button class="btn-temporada">Comprar</button>
+                `;
+          contenedor.appendChild(div);
+        });
+
+        console.log(`✅ Renderizados ${lista.length} productos en contenedor`);
+      }
+    </script>
+  </body>
+</html>
