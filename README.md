@@ -2,27 +2,22 @@
 
 ## 📋 Descripción del Proyecto
 
-Gatox es una tienda online especializada en accesorios y productos para gatos. El proyecto fue desarrollado como entrega para el curso de JavaScript de Coderhouse y presenta un e-commerce completo con carrito de compras, sistema de checkout y múltiples páginas.
+**Gatox** es una tienda online especializada en accesorios y productos para gatos desarrollada con **JavaScript ES6+**. Este proyecto representa un e-commerce completo con funcionalidades avanzadas incluyendo carrito de compras persistente, sistema de checkout multi-paso, validación de formularios, y una experiencia de usuario optimizada.
 
 ## 🚀 Cómo ejecutar el proyecto
 
-### Opción 1: Abrir directamente en el navegador
+### ✅ Método Recomendado: Live Server (VS Code)
+
+1. **Abrir proyecto en VS Code**
+2. **Instalar extensión Live Server** si no la tienes
+3. **Clic derecho** en `index.html` → **"Open with Live Server"**
+4. **¡Listo!** Se abrirá automáticamente en `http://localhost:5500`
+
+### 📂 Alternativa: Apertura directa
 
 1. Descomprimir el archivo del proyecto
-2. Abrir el archivo `index.html` directamente en cualquier navegador web moderno
-3. ¡El sitio debería funcionar correctamente!
-
-### Opción 2: Servidor local (recomendado)
-
-1. Si tienes Python instalado:
-   ```bash
-   python -m http.server 8000
-   ```
-2. Si tienes Node.js instalado:
-   ```bash
-   npx http-server
-   ```
-3. Abrir en el navegador la URL que aparezca (generalmente `http://localhost:8000`)
+2. Hacer doble clic en `index.html`
+3. ⚠️ **Nota**: Algunas funcionalidades pueden estar limitadas por CORS
 
 ## 🗂️ Estructura del Proyecto
 
@@ -58,38 +53,39 @@ Entregable1/
 
 ### 🛒 **E-commerce Completo**
 
-- ✅ Catálogo de productos dinámico (cargado desde JSON)
-- ✅ Sistema de carrito persistente (localStorage)
-- ✅ Gestión de cantidades y precios
-- ✅ Cupones de descuento funcionales
-- ✅ Checkout multi-paso
+- ✅ **Catálogo dinámico**: Productos cargados desde JSON con Fetch API
+- ✅ **Carrito persistente**: localStorage con gestión avanzada de cantidades
+- ✅ **Sistema de descuentos**: Cupones funcionales (`GATO10`, `FELINOS5`, `SUPER20`)
+- ✅ **Checkout multi-paso**: Proceso guiado con validaciones
+- ✅ **Gestión de stock**: Control de cantidades y disponibilidad
+- ✅ **Búsqueda en tiempo real**: Filtrado por nombre y marca
 
 ### 🎨 **Interfaz de Usuario**
 
-- ✅ Diseño responsive (mobile-first)
-- ✅ Animaciones suaves y micro-interacciones
-- ✅ Carrusel de imágenes en homepage
-- ✅ Sistema de notificaciones (SweetAlert2)
-- ✅ Esquema de colores coherente
+- ✅ **Diseño responsive**: Mobile-first con breakpoints optimizados
+- ✅ **Micro-interacciones**: Animaciones fluidas y transiciones suaves
+- ✅ **Hero carousel**: Slider automático con controles manuales
+- ✅ **Notificaciones premium**: SweetAlert2 con temas personalizados
+- ✅ **Esquema visual coherente**: Variables CSS y tipografía profesional
+- ✅ **Lazy loading**: Optimización de carga de imágenes
 
-### ⚙️ **Funcionalidades JavaScript**
+### ⚙️ **Funcionalidades JavaScript Avanzadas**
 
-- ✅ Manipulación del DOM
-- ✅ Fetch API para cargar datos
-- ✅ localStorage para persistencia
-- ✅ Gestión de eventos
-- ✅ Validación de formularios
-- ✅ Sistema SPA (Single Page Application) en checkout
+- ✅ **Manipulación del DOM**: Renderizado dinámico optimizado
+- ✅ **Fetch API**: Carga asíncrona con manejo de errores
+- ✅ **Web Storage**: localStorage para persistencia de datos
+- ✅ **Event Delegation**: Gestión eficiente de eventos
+- ✅ **Form Validation**: Validación en tiempo real con UX mejorada
+- ✅ **Performance**: Debouncing, caching y optimizaciones
+- ✅ **Intersection Observer**: Animaciones lazy para mejor rendimiento
 
-## 🔧 Correcciones Realizadas
+### 🔧 **Arquitectura del Código**
 
-Se solucionaron todos los problemas de rutas identificados:
-
-1. **✅ Rutas CSS y JS**: Cambiadas de absolutas (`/assets/...`) a relativas (`../assets/...`)
-2. **✅ Rutas de imágenes**: Actualizadas en HTML, CSS y JavaScript
-3. **✅ Fetch API**: Rutas corregidas en `renderProductos.js` y `checkout.js`
-4. **✅ Archivos faltantes**: Creados `main.js`, `checkout.css` e `inspiracion.html`
-5. **✅ Detección de contexto**: JavaScript detecta automáticamente si está en homepage o subpáginas
+- ✅ **Modularización**: Separación clara de responsabilidades
+- ✅ **ES6+ Features**: Arrow functions, destructuring, template literals
+- ✅ **Error Handling**: Try/catch y validaciones robustas
+- ✅ **Context Detection**: Auto-detección de rutas y contexto
+- ✅ **Clean Code**: Comentarios, naming conventions y estructura
 
 ## 📱 Páginas Funcionales
 
@@ -100,51 +96,175 @@ Se solucionaron todos los problemas de rutas identificados:
 5. **Contacto (`pages/contacto.html`)**: Formulario de contacto
 6. **Inspiración (`pages/inspiracion.html`)**: Galería e ideas para propietarios de gatos
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Stack Tecnológico
 
-- **HTML5**: Estructura semántica
-- **CSS3**: Flexbox, Grid, Custom Properties, Animaciones
-- **JavaScript ES6+**: Módulos, Arrow functions, Async/Await
-- **Libraries**: SweetAlert2, AOS (Animate On Scroll), Font Awesome
-- **Fonts**: Google Fonts (Raleway + Playfair Display)
+### Frontend Core
+
+- **HTML5**: Estructura semántica y accesible
+- **CSS3**: Flexbox, Grid, Custom Properties, Animations
+- **JavaScript ES6+**: Sintaxis moderna y funcionalidades avanzadas
+
+### Librerías y Frameworks
+
+- **SweetAlert2**: Notificaciones y alertas personalizadas
+- **AOS (Animate On Scroll)**: Animaciones de scroll optimizadas
+- **Font Awesome**: Iconografía profesional
+- **Normalize.css**: Reset CSS cross-browser
+
+### Fuentes y Tipografía
+
+- **Google Fonts**: Raleway (sans-serif) + Playfair Display (serif)
+- **Sistema de tipografía**: Escalado modular y responsive
+
+### Herramientas de Desarrollo
+
+- **VS Code**: Editor principal con Live Server
+- **Git**: Control de versiones
+- **Chrome DevTools**: Debugging y performance
 
 ## 🎯 Conceptos de JavaScript Implementados
 
-1. **DOM Manipulation**: Creación y modificación de elementos
-2. **Event Handling**: Click, input, scroll events
-3. **Storage API**: localStorage para persistencia de datos
-4. **Fetch API**: Carga asíncrona de datos JSON
-5. **Array Methods**: filter, map, reduce, forEach
-6. **Template Literals**: Para generar HTML dinámico
-7. **Destructuring**: En objetos y arrays
-8. **Error Handling**: Try/catch en operaciones async
+### 📝 **Manipulación del DOM**
 
-## 🐛 Testing
+```javascript
+// Renderizado dinámico de productos
+function renderizarProductos(lista) {
+  const contenedor = document.querySelector(".grid-temporada");
+  contenedor.innerHTML = "";
 
-Para verificar que todo funciona:
+  lista.forEach((producto) => {
+    const div = document.createElement("div");
+    div.className = "card-producto";
+    div.innerHTML = `...`; // Template literal
+    contenedor.appendChild(div);
+  });
+}
+```
 
-1. **Homepage**: Verificar que el carrusel funcione y se carguen los productos
-2. **Agregar productos**: Hacer clic en "Comprar" y verificar notificaciones
-3. **Carrito**: Revisar que se actualice el contador y se muestren los productos
-4. **Búsqueda**: Probar el filtro en la página de catálogo
-5. **Cupones**: Probar códigos: `GATO10`, `FELINOS5`, `SUPER20`
-6. **Checkout**: Completar el proceso paso a paso
+### 🔄 **Asincronía y Fetch API**
 
-## 📧 Contacto
+```javascript
+// Carga de datos con manejo de errores
+async function cargarProductos() {
+  try {
+    const response = await fetch("./assets/data/productos.json");
+    const productos = await response.json();
+    renderizarProductos(productos);
+  } catch (error) {
+    console.error("Error cargando productos:", error);
+  }
+}
+```
 
-**Desarrollador**: Francisco Haro  
-**Proyecto**: Entrega 1 - JavaScript  
-**Curso**: Coderhouse - Desarrollo Full Stack
+### 💾 **Web Storage y Persistencia**
+
+```javascript
+// Gestión del carrito con localStorage
+const guardarCarrito = () =>
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+const cargarCarrito = () => JSON.parse(localStorage.getItem("carrito")) || [];
+```
+
+### 🎪 **Event Handling Avanzado**
+
+```javascript
+// Event delegation y debouncing
+document.getElementById("busqueda")?.addEventListener(
+  "input",
+  debounce((e) => {
+    const filtrados = productos.filter((p) =>
+      p.nombre.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    renderizarProductos(filtrados);
+  }, 300)
+);
+```
+
+### 🔍 **Array Methods y Funcional**
+
+```javascript
+// Métodos de array para manipulación de datos
+const totalCarrito = carrito.reduce(
+  (acc, item) => acc + item.precio * item.cantidad,
+  0
+);
+
+const productosDestacados = productos
+  .filter((p) => p.reviews > 50)
+  .map((p) => ({ ...p, destacado: true }))
+  .sort((a, b) => b.reviews - a.reviews);
+```
+
+### ✅ **Validación y UX**
+
+```javascript
+// Validación de formularios con feedback visual
+function validarCampo(campo, valor) {
+  const elemento = elementos.campos[campo];
+  const error = validadores[campo](valor);
+
+  elemento.classList.toggle("valido", !error);
+  elemento.classList.toggle("invalido", !!error);
+
+  return !error;
+}
+```
+
+## 🐛 Testing y Verificación
+
+### 🏠 **Homepage (index.html)**
+
+- [ ] ✅ Carrusel funciona automáticamente cada 6 segundos
+- [ ] ✅ Navegación entre slides con botones prev/next
+- [ ] ✅ Productos se cargan dinámicamente desde JSON
+- [ ] ✅ Contador del carrito se actualiza correctamente
+
+### 🛒 **Funcionalidad de Carrito**
+
+- [ ] ✅ Botón "Comprar" agrega productos
+- [ ] ✅ Notificación SweetAlert2 al agregar
+- [ ] ✅ Contador visual se actualiza
+- [ ] ✅ Carrito persiste al recargar página
+- [ ] ✅ Gestión de cantidades (+ / -)
+
+### 🔍 **Catálogo y Búsqueda**
+
+- [ ] ✅ Página catálogo muestra todos los productos
+- [ ] ✅ Buscador filtra en tiempo real
+- [ ] ✅ Resultados se actualizan dinámicamente
+- [ ] ✅ Imágenes cargan correctamente
+
+### 💳 **Sistema de Cupones**
+
+Probar estos códigos en el carrito:
+
+- [ ] ✅ `GATO10` → Descuento de $10.00
+- [ ] ✅ `FELINOS5` → Descuento de $5.00
+- [ ] ✅ `SUPER20` → Descuento de $20.00
+- [ ] ✅ Código inválido muestra error
+
+### 📝 **Checkout Multi-paso**
+
+- [ ] ✅ Paso 1: Login/Registro o continuar como invitado
+- [ ] ✅ Paso 2: Información de envío
+- [ ] ✅ Paso 3: Información de pago
+- [ ] ✅ Paso 4: Confirmación y procesamiento
+- [ ] ✅ Validaciones en cada paso
+
+### 📧 **Formulario de Contacto**
+
+- [ ] ✅ Validación en tiempo real
+- [ ] ✅ Contadores de caracteres
+- [ ] ✅ Estados visuales (válido/inválido)
+- [ ] ✅ Animaciones y feedback
+- [ ] ✅ Simulación de envío
+
+### 📱 **Responsive Design**
+
+- [ ] ✅ Mobile (≤ 480px)
+- [ ] ✅ Tablet (481px - 768px)
+- [ ] ✅ Desktop (≥ 769px)
+- [ ] ✅ Navegación mobile funcional
 
 ---
-
-## 🚨 Nota para el Tutor
-
-Todos los problemas de rutas han sido solucionados. El proyecto ahora debería:
-
-- ✅ Cargar correctamente desde cualquier página
-- ✅ Mostrar todas las imágenes
-- ✅ Ejecutar todos los scripts sin errores 404
-- ✅ Funcionar tanto abriendo archivos directamente como en servidor local
-
-**Recomendación**: Abrir `index.html` directamente en el navegador para una evaluación rápida.

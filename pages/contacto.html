@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catalogo</title>
+    <title>Contacto - Gatox</title>
 
     <!-- Font de google font -->
     <link
@@ -23,6 +23,7 @@
     <!-- Hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../assets/css/normalize.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/contacto.css" />
   </head>
   <body>
     <!-- ======================================== -->
@@ -90,45 +91,164 @@
     <!--               MAIN                     -->
     <!-- ======================================== -->
 
-    <main class="seccion-inspiracion contenedor">
-      <h1 class="titulo-seccion text-center">Inspiración Gatuna</h1>
-      <p class="descripcion-inspiracion text-center">
-        Ideas, estilos y rincones que harán que tu gato ame cada espacio de tu
-        hogar.
+    <main class="seccion-contacto contenedor">
+      <h1 class="titulo-seccion text-center">Contáctanos</h1>
+      <p class="descripcion-contacto text-center">
+        ¿Tienes alguna pregunta sobre nuestros productos? ¡Estamos aquí para
+        ayudarte!
       </p>
 
-      <div class="grid-inspiracion">
-        <div class="card-inspiracion">
-          <img
-            src="../assets/img/image/inspo-1.jpg"
-            alt="Rincón cálido para gatos"
-          />
-          <p>Rincón cálido con luz natural</p>
+      <div class="contacto-contenido">
+        <!-- Información de contacto -->
+        <div class="info-contacto">
+          <h2>Información de Contacto</h2>
+          <div class="item-contacto">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <h3>Dirección</h3>
+              <p>Av. Amazonas N24-03 y Wilson, Quito, Ecuador</p>
+            </div>
+          </div>
+          <div class="item-contacto">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <h3>Teléfono</h3>
+              <p>+593 99 999 9999</p>
+            </div>
+          </div>
+          <div class="item-contacto">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <h3>Email</h3>
+              <p>contacto@gatox.com</p>
+            </div>
+          </div>
+          <div class="item-contacto">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <h3>Horarios de Atención</h3>
+              <p>
+                Lunes a Viernes: 9:00 AM - 6:00 PM<br />
+                Sábados: 10:00 AM - 4:00 PM
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="card-inspiracion">
-          <img
-            src="../assets/img/image/inspo-2.jpg"
-            alt="Estante para gatos en altura"
-          />
-          <p>Estante elevado estilo minimalista</p>
+
+        <!-- Formulario de contacto -->
+        <div class="formulario-contacto">
+          <h2>Envíanos un Mensaje</h2>
+          <form id="form-contacto" class="form-contacto">
+            <div class="campo-grupo">
+              <label for="nombre">Nombre Completo *</label>
+              <input type="text" id="nombre" name="nombre" required />
+              <span class="error-mensaje" id="error-nombre"></span>
+            </div>
+
+            <div class="campo-grupo">
+              <label for="email">Correo Electrónico *</label>
+              <input type="email" id="email" name="email" required />
+              <span class="error-mensaje" id="error-email"></span>
+            </div>
+
+            <div class="campo-grupo">
+              <label for="telefono">Teléfono</label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="+593 99 999 9999"
+              />
+              <span class="error-mensaje" id="error-telefono"></span>
+            </div>
+
+            <div class="campo-grupo">
+              <label for="asunto">Asunto *</label>
+              <select id="asunto" name="asunto" required>
+                <option value="">Selecciona un asunto</option>
+                <option value="consulta-producto">
+                  Consulta sobre producto
+                </option>
+                <option value="envio">Información de envío</option>
+                <option value="devolucion">Devoluciones y cambios</option>
+                <option value="sugerencia">Sugerencias</option>
+                <option value="otro">Otro</option>
+              </select>
+              <span class="error-mensaje" id="error-asunto"></span>
+            </div>
+
+            <div class="campo-grupo">
+              <label for="mensaje">Mensaje *</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="5"
+                required
+                placeholder="Escribe tu mensaje aquí..."
+              ></textarea>
+              <span class="error-mensaje" id="error-mensaje"></span>
+            </div>
+
+            <div class="campo-grupo checkbox-grupo">
+              <input
+                type="checkbox"
+                id="acepto-terminos"
+                name="acepto-terminos"
+                required
+              />
+              <label for="acepto-terminos">
+                Acepto los términos y condiciones y la política de privacidad *
+              </label>
+              <span class="error-mensaje" id="error-terminos"></span>
+            </div>
+
+            <button type="submit" class="btn-enviar">
+              <i class="fa-solid fa-paper-plane"></i>
+              Enviar Mensaje
+            </button>
+          </form>
         </div>
-        <div class="card-inspiracion">
-          <img
-            src="../assets/img/image/inspo-3.jpg"
-            alt="Gimnasio moderno para gatos"
-          />
-          <p>Gimnasio moderno con texturas suaves</p>
-        </div>
-        <div class="card-inspiracion">
-          <img
-            src="../assets/img/image/inspo-4.jpg"
-            alt="Decoración boho para gatos"
-          />
-          <p>Decoración boho natural y acogedora</p>
-        </div>
-        <!-- Agrega más imágenes si lo deseas -->
       </div>
     </main>
+
+    <!-- ======================================== -->
+    <!--          SECCIÓN BENEFICIOS              -->
+    <!-- ======================================== -->
+    <section class="seccion-beneficios">
+      <div class="contenedor">
+        <h2 class="titulo-beneficios text-center">¿Por qué elegirnos?</h2>
+        <div class="grid-beneficios">
+          <div class="beneficio-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="beneficio-icono">
+              <i class="fa-solid fa-shipping-fast"></i>
+            </div>
+            <h3>Envío Rápido</h3>
+            <p>Entrega en 24-48 horas en toda la ciudad</p>
+          </div>
+          <div class="beneficio-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="beneficio-icono">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3>Soporte 24/7</h3>
+            <p>Atención personalizada cuando lo necesites</p>
+          </div>
+          <div class="beneficio-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="beneficio-icono">
+              <i class="fa-solid fa-shield-alt"></i>
+            </div>
+            <h3>Garantía Total</h3>
+            <p>30 días de garantía en todos nuestros productos</p>
+          </div>
+          <div class="beneficio-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="beneficio-icono">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3>Amor por los Gatos</h3>
+            <p>Productos diseñados por amantes de los felinos</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ======================================== -->
     <!--               FOOTER                     -->
@@ -178,6 +298,7 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/renderProductos.js"></script>
     <script src="../assets/js/carrito.js"></script>
+    <script src="../assets/js/contacto.js"></script>
 
     <!-- AOS al final -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
